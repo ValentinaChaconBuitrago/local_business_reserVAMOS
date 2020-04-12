@@ -2,6 +2,20 @@ const express = require("express");
 const passport = require("passport");
 
 const router = express.Router();
+const MongoUtils = require("../db/MongoUtils.js");
+
+const mu = MongoUtils();
+
+router.post("/addStore", function (req, res) {
+  console.log("Backend!!");
+  console.log("Llego post user al index!!");
+  let body = req.body;
+  mu.insertBusiness(body)
+    .then((doc) => {
+      res.redirect("/");
+    })
+    .catch((err) => console.log(err));
+});
 
 // Define routes.
 router.get("/login", function (req, res) {
@@ -9,12 +23,12 @@ router.get("/login", function (req, res) {
   res.render("login2");
 });
 
-
 router.post(
   "/login",
   passport.authenticate("local-login", {
     successRedirect: "/login",
-    failureRedirect: "/login" }),
+    failureRedirect: "/login",
+  }),
   function (req, res) {
     res.redirect("/");
   }
@@ -34,10 +48,9 @@ router.get(
 );
 
 router.get("/getUser", (req, res) => {
-  console.log("getting user in routes",req.user);
+  console.log("getting user in routes", req.user);
   return res.json(req.user || null);
 });
-
 
 router.get("/signup", function (req, res) {
   // render the page and pass in any flash data if it exists

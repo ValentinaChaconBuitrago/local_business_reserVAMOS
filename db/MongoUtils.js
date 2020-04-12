@@ -30,19 +30,27 @@ function MongoUtils() {
       });
   };
 
-
   mu.getUser = (username) => {
     console.log("getting user in mongoutils with username", username);
     return mu.connect().then((client) =>
       client
         .db("authentication")
         .collection("users")
-        .find({username: username})
+        .find({ username: username })
         .toArray()
         .finally(() => client.close())
     );
   };
 
+  mu.insertBusiness = (data) => {
+    return mu.connect().then((client) =>
+      client
+        .db("web")
+        .collection("stores")
+        .insertOne(data)
+        .finally(() => client.close())
+    );
+  };
 
   mu.insertDocument = (pUsername, pPassword) => {
     console.log("adding user in mongoutils with username", pUsername);
