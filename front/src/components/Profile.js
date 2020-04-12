@@ -1,6 +1,5 @@
 import React from "react";
 import PropTypes from "prop-types";
-import FormAddStore from "./FormAddStore.js";
 
 
   const Profile = props => {
@@ -24,13 +23,6 @@ import FormAddStore from "./FormAddStore.js";
         </div>
 
     </div>
-
-        <div className="page-header text-center">
-        <h1><span className="fa fa-shopping-cart"></span> Add a business</h1>
-        <FormAddStore></FormAddStore>
-
-    </div>
-
 </div>
       );
 };

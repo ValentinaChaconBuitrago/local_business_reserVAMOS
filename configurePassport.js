@@ -89,56 +89,12 @@ passport.use(
             mu.insertDocument(username, password)
               .then(() => mu.getUser(username))
               .then((user) => {
-                console.log("user in promise", user);
                 user.map(u=>{
-                  console.log("inside user",u.username);
                   return cb(null, u);
                 });
               })
               .catch((err) => console.log(err));
-
-              /*
-            mu.insertDocument(username, password)
-              .then(() => {
-                db.users.findByUsername(username, function (err, user) {
-                  console.log("entro al signup username",user);
-                  if (err) {
-                    return cb(err);
-                  }
-                  if (!user) {
-                    return cb(null, false);
-                  }
-                  if (user.password != password) {
-                    return cb(null, false);
-                  }
-                  return cb(null, user);
-                });
-              })
-              .catch((err) => console.log(err));*/
-
-            /*
-            mu.connect().then((client) =>
-              mu.getUser(client, username).then((user) => (us = user))
-            );*/
-            //return cb(null, us);
           }
-
-          /*
-          db.users.findByUsername(username, function (err, user) {
-            console.log("entro al find de signup!!!!");
-            console.log("user en signup", user);
-            if (err) {
-              return cb(err);
-            }
-            return cb(null, user);
-          });*/
-
-          /*let us = null;
-            db.users.findByUsername(username, function (err, user) {
-              console.log("user inside config", user);
-              us = user;
-              return done(null, user);
-            });*/
         });
       });
     }
