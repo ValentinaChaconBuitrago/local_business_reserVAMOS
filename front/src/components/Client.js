@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
 import Questions from "./Questions.js";
 import Maps from "./Maps.js";
+import "../Client.css";
 
 //const apikey = process.env.REACT_APP_GOOGLEAPIKEY;
-
 
 const googlemapsurl =
   "https://maps.googleapis.com/maps/api/js?key=" +
@@ -58,7 +58,9 @@ const Client = () => {
       <div className="Client">
         <div>
           <div>
-          <h1>Stores close to you</h1>
+            <h1 className="display-4 " id="storesTitle">
+              Tiendas cercanas
+            </h1>
           </div>
         </div>
         <div>

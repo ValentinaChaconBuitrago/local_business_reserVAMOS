@@ -17,33 +17,36 @@ const Signup = () => {
     }, []);
 
     return (
-    <div>
-        {!user ? (
-            <FormSignup></FormSignup>
-        ) : (
-            <div>
-                <div className="row">
-                    <div className="col-sm-3 col-sm-offset-3"></div>
-                    <div className="col-sm-3 col-sm-offset-3">
-                        <Profile
-                            username={user.username}
-                            _id={user._id}
-                            password={user.password}
-                        ></Profile>
-                    </div>
-                    <div className="col-sm-3 col-sm-offset-3">
-                        <button onClick={onLogout} className="btn btn-primary">
-                            Logout
-                        </button>
-                    </div>
-                </div>
+        <div>
+            {!user ? (
+                <FormSignup></FormSignup>
+            ) : (
                 <div>
-                    <FormAddStore></FormAddStore>
+                    <div className="row">
+                        <div className="col-sm-3 col-sm-offset-3"></div>
+                        <div className="col-sm-3 col-sm-offset-3">
+                            <Profile
+                                username={user.username}
+                                _id={user._id}
+                                password={user.password}
+                            ></Profile>
+                        </div>
+                        <div className="col-sm-3 col-sm-offset-3">
+                            <button
+                                onClick={onLogout}
+                                className="btn btn-primary"
+                            >
+                                Logout
+                            </button>
+                        </div>
+                    </div>
+                    <div>
+                        <FormAddStore></FormAddStore>
+                    </div>
                 </div>
-            </div>
-        )}
-    </div>
-);
+            )}
+        </div>
+    );
 };
 
 export default Signup;

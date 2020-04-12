@@ -1,4 +1,5 @@
 const MongoClient = require("mongodb").MongoClient;
+const ObjectId = require("mongodb").ObjectID;
 
 function MongoUtils() {
   const mu = {};
@@ -77,8 +78,8 @@ function MongoUtils() {
       });
   };
 
-  mu.getRestaurant = (client, id) => {
-    const collectionRestaurant = client.db("web").collection("restaurants");
+  mu.getShop = (client, id) => {
+    const collectionRestaurant = client.db("web").collection("stores");
     console.log("Getting restaurant");
     //retorna una promesa
     return collectionRestaurant
