@@ -42,6 +42,16 @@ function MongoUtils() {
     );
   };
 
+  mu.insertBusiness = (data) => {
+    return mu.connect().then((client) =>
+      client
+        .db("web")
+        .collection("stores")
+        .insertOne(data)
+        .finally(() => client.close())
+    );
+  };
+
   mu.insertDocument = (pUsername, pPassword) => {
     console.log("adding user in mongoutils with username", pUsername);
     return mu.connect().then((client) =>
