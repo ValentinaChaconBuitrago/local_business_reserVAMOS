@@ -1,8 +1,11 @@
 import React from "react";
+import NavUser from "../NavUser.js";
 
 const FormAddStore = () => {
 
 return (
+  <div>
+  <NavUser></NavUser>
   <div className="container">
     <h1>
       <span className="fa fa-shopping-cart"></span> Add a business
@@ -65,6 +68,7 @@ return (
         </form>
       </div>
     </div>
+  </div>
   </div>
 );
 };

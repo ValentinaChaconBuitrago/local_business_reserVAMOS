@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Questions from "./Questions.js";
+import Nav from "../Nav.js";
 import Maps from "./Maps.js";
 import "../Client.css";
 
@@ -55,6 +56,7 @@ const Client = () => {
 
     return (
       <div className="Client">
+        <Nav></Nav>
         <div>
           <div>
             <h1 className="display-4 " id="storesTitle">

@@ -2,6 +2,8 @@ import React, { useState, useEffect } from "react";
 import FormLogin from "./FormLogin.js";
 import Profile from "./Profile.js";
 import FormAddStore from "./FormAddStore.js";
+import Nav from "../Nav.js";
+import NavUser from "../NavUser.js";
 
 const Login = () => {
   const [user, setUser] = useState(null);
@@ -19,9 +21,13 @@ const Login = () => {
   return (
     <div>
       {!user ? (
+        <div>
+        <Nav></Nav>
         <FormLogin></FormLogin>
+        </div>
       ) : (
         <div>
+          <NavUser></NavUser>
           <div className="row">
             <div className="col-sm-3 col-sm-offset-3"></div>
             <div className="col-sm-3 col-sm-offset-3">
@@ -36,9 +42,6 @@ const Login = () => {
                 Logout
               </button>
             </div>
-          </div>
-          <div>
-            <FormAddStore></FormAddStore>
           </div>
         </div>
       )}
