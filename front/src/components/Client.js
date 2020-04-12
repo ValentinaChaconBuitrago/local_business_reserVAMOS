@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Questions from "./Questions.js";
 import Maps from "./Maps.js";
-
+import "../Client.css";
 const apikey = process.env.REACT_APP_GOOGLEAPIKEY;
 
 const googlemapsurl =
@@ -43,7 +43,7 @@ const Client = () => {
         }
       )
       .then(() => setIsLoaded(true));
-    const dir = "calle 78# 7-98";
+    const dir = "calle 78 798";
     let fet =
       "https://maps.googleapis.com/maps/api/geocode/json?address=" +
       dir +
@@ -56,7 +56,11 @@ const Client = () => {
       .then((res) => res.json())
       .then(
         (result) => {
-          console.log("adress coords", result.results[0].geometry.location);
+          console.log(
+            fet,
+            "adress coords",
+            result.results[0].geometry.location.lat
+          );
         },
         // Nota: es importante manejar errores aquí y no en
         // un bloque catch() para que no interceptemos errores

@@ -22,16 +22,13 @@ router.get("/getRestaurants", function (req, res) {
     .catch((err) => console.log(err));
 });
 
-router.get("/details/:id", (req, res) => {
-  console.log("Llegue a los detalles");
+router.get("/shop/:id", (req, res) => {
+  console.log("Llegue a los usuarios");
   const id = req.params.id;
   console.log("identificador", req.params.id);
   mu.connect()
-    .then((client) => mu.getRestaurant(client, id))
-    .then((restaurant) => {
-      res.send(`
-        ${restaurant.map((g) => details.buildFile(g))}`);
-    })
+    .then((client) => mu.getShop(client, id))
+    .then((user) => res.json(user))
     .catch((err) => console.log(err));
 });
 

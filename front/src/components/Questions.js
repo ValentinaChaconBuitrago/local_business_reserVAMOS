@@ -52,6 +52,11 @@ const Questions = (props) => {
               <div className="row">
                 <div className="col-md-8">
                   <p className="card-text">{item.description}</p>
+                  <a href={"/store/" + item._id}>
+                    <button type="button" class="btn btn-secondary">
+                      Ver detalles
+                    </button>
+                  </a>
                 </div>
                 <div className="col-md-4">
                   <div className="embed-responsive embed-responsive-16by9">
