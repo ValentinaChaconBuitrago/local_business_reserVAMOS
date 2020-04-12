@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
+import Card from "./Card.js";
 
 //Props va a recibir las preguntas de la base de datos
 function calc(lat1, lat2, lon1, lon2) {
@@ -38,37 +39,8 @@ const Questions = (props) => {
     <div>
       <ul>
         {props.stores.map((item) => (
-          <div
-            className="card border-dark mb-3"
-            key={item._id}
-            style={{ maxWidth: "50ww%" }}
-          >
-            <div className="card-header">
-              A {calc(item.position.lat, lat, item.position.lng, lon)} Km de
-              distancia
-            </div>
-            <div className="card-body text-dark">
-              <h5 className="card-title">{item.name}</h5>
-              <div className="row">
-                <div className="col-md-8">
-                  <p className="card-text">{item.description}</p>
-                  <a href={"/store/" + item._id}>
-                    <button type="button" class="btn btn-secondary">
-                      Ver detalles
-                    </button>
-                  </a>
-                </div>
-                <div className="col-md-4">
-                  <div className="embed-responsive embed-responsive-16by9">
-                    <img
-                      alt="Card image cap"
-                      className="card-img-top embed-responsive-item"
-                      src={item.image}
-                    />
-                  </div>
-                </div>
-              </div>
-            </div>
+          <div>
+            <Card item={item} lat={lat} lon={lon}></Card>
           </div>
         ))}
       </ul>

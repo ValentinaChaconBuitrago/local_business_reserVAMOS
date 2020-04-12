@@ -10,16 +10,19 @@ router.get("/", function (req, res) {
 });
 
 const parseAddress = (address) => {
+  /*
   let parts = address.split("#");
   let nums = parts[1].replace(/ /g, "");
   let finalNum = nums.split("-");
   let newAddress = parts[0] + " " + finalNum[0] + finalNum[1];
   console.log("new address", newAddress);
-  return newAddress;
+  */
+  console.log("new address", address);
+  return address;
 };
 
 const getLocation = (address) => {
-  let key = "KEY";
+  let key = "AIzaSyBA6TIHespjF9waFiK_cpm7eXQSBCNg4lk";
   let direccion =
     "https://maps.googleapis.com/maps/api/geocode/json?address=" +
     address +

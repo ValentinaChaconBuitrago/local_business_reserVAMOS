@@ -5,7 +5,6 @@ import "../Client.css";
 
 const apikey = process.env.REACT_APP_GOOGLEAPIKEY;
 
-
 const googlemapsurl =
   "https://maps.googleapis.com/maps/api/js?key=" +
   apikey +
@@ -64,12 +63,12 @@ const Client = () => {
           </div>
         </div>
         <div>
-          <div className="row">
-            <div id="storesDiv" className="col-md-6">
+          <div className="row row-height">
+            <div id="storesDiv" className="col-md-6 left ">
               <Questions stores={items} lat={lat} lon={lon}></Questions>
             </div>
 
-            <div className="col-md-6">
+            <div className="col-md-6 ">
               <div id="rowDiv">
                 <Maps
                   isMarkerShown
@@ -78,7 +77,7 @@ const Client = () => {
                   containerElement={
                     <div style={{ height: `100%`, width: `100%` }} />
                   }
-                  mapElement={<div style={{ height: `85vh` }} />}
+                  mapElement={<div style={{ height: `80vh` }} />}
                   mar={{ lat: lat, lng: lon }}
                   tiendas={items}
                 ></Maps>

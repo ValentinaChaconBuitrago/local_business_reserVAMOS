@@ -4,3 +4,15 @@
 #storesTitle {
   text-align: center;
 }
+
+.row-height {
+  height: 80vh;
+}
+.left {
+  height: 100%;
+  overflow-y: scroll;
+}
+::-webkit-scrollbar {
+  width: 0px;
+  background: transparent;
+}

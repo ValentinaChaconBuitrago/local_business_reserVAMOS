@@ -10,19 +10,19 @@ import Store from "./components/Store.js";
 const apikey = process.env.REACT_APP_GOOGLEAPIKEY;
 
 const App = () => {
-	return (
-		<Router>
-			<div className="App">
-				<Nav></Nav>
-				<Switch>
-					<Route path="/" exact component={Client} />
-					<Route path="/login" exact component={Login} />
-					<Route path="/signup" exact component={Signup} />
-					<Route path={"/store/:_id"} exact component={Store} />
-				</Switch>
-			</div>
-		</Router>
-	);
+  return (
+    <Router>
+      <div className="App">
+        <Nav></Nav>
+        <Switch>
+          <Route path="/" exact component={Client} />
+          <Route path="/login" exact component={Login} />
+          <Route path="/signup" exact component={Signup} />
+          <Route path={"/store/:_id"} exact component={Store} />
+        </Switch>
+      </div>
+    </Router>
+  );
 };
 
 export default App;

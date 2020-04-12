@@ -64,7 +64,6 @@ function MongoUtils() {
     //retorna una promesa
     return collectionRestaurant
       .find({})
-      .limit(2)
       .toArray()
       .finally(() => {
         console.log("closing client");
