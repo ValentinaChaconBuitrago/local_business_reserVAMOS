@@ -20,6 +20,7 @@ const parseAddress = (address) => {
 
 const getLocation = (address) => {
   let key = "KEY";
+
   let direccion =
     "https://maps.googleapis.com/maps/api/geocode/json?address=" +
     address +
