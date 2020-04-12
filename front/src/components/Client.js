@@ -3,13 +3,13 @@ import Questions from "./Questions.js";
 import Maps from "./Maps.js";
 import "../Client.css";
 
-//const apikey = process.env.REACT_APP_GOOGLEAPIKEY;
+const apikey = process.env.REACT_APP_GOOGLEAPIKEY;
+
 
 const googlemapsurl =
   "https://maps.googleapis.com/maps/api/js?key=" +
   apikey +
   "&libraries=geometry,drawing,places";
-console.log("KEY", apikey);
 const Client = () => {
   const [error, setError] = useState(null);
   const [isLoaded, setIsLoaded] = useState(false);

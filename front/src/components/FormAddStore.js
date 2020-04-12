@@ -49,12 +49,12 @@ return (
             />
           </div>
           <div className="form-group">
-            <label>Description long</label>
+            <label>Description</label>
             <textarea
               placeholder="Minimercado de frutas y verduras"
               className="form-control"
               name="description"
-              rows="5"
+              rows="4"
               cols="40"
             ></textarea>
           </div>

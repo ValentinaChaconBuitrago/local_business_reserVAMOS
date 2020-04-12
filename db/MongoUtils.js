@@ -7,20 +7,17 @@ function MongoUtils() {
   mu.connect = () => {
     const uri =
       "mongodb+srv://val:val@cluster0-wnneh.azure.mongodb.net/test?retryWrites=true&w=majority";
-
     const client = new MongoClient(
       uri,
       { useNewUrlParser: true },
       { useUnifiedTopology: true }
     );
-    console.log("Connecting");
     //retorna una promesa
     return client.connect();
   };
 
   mu.getDocuments = (client) => {
     const collectionUsers = client.db("authentication").collection("users");
-    console.log("Getting documents");
     //retorna una promesa
     return collectionUsers
       .find({})
@@ -32,7 +29,6 @@ function MongoUtils() {
   };
 
   mu.getUser = (username) => {
-    console.log("getting user in mongoutils with username", username);
     return mu.connect().then((client) =>
       client
         .db("authentication")
@@ -54,7 +50,6 @@ function MongoUtils() {
   };
 
   mu.insertDocument = (pUsername, pPassword) => {
-    console.log("adding user in mongoutils with username", pUsername);
     return mu.connect().then((client) =>
       client
         .db("authentication")
@@ -66,7 +61,6 @@ function MongoUtils() {
 
   mu.getRestaurants = (client) => {
     const collectionRestaurant = client.db("web").collection("stores");
-    console.log("Getting documents");
     //retorna una promesa
     return collectionRestaurant
       .find({})
@@ -80,7 +74,6 @@ function MongoUtils() {
 
   mu.getShop = (client, id) => {
     const collectionRestaurant = client.db("web").collection("stores");
-    console.log("Getting restaurant");
     //retorna una promesa
     return collectionRestaurant
       .find({ _id: ObjectId(id) })
