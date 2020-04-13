@@ -54,7 +54,7 @@ yarn add [dependency name]
 After this, the application will be available at http://localhost:3000/
 
 ## Deployed Application
-[Microshopping](https://bogota-restaurants.herokuapp.com/)
+[Microshopping](https://appmicroshopping.herokuapp.com/)
 
 ## License
 [MIT License](https://github.com/ValentinaChaconBuitrago/local_business/blob/master/LICENSE)
