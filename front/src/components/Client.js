@@ -24,12 +24,17 @@ const Client = () => {
   // Note: the empty deps array [] means
   // this useEffect will run once
   // similar to componentDidMount()
+  navigator.geolocation.watchPosition((pos) => {
+    setLat(pos.coords.latitude);
+    setLon(pos.coords.longitude);
+  });
   useEffect(() => {
     const geo = navigator.geolocation.getCurrentPosition(function success(pos) {
       var crd = pos.coords;
       setLat(crd.latitude);
       setLon(crd.longitude);
     });
+
     function sleep(ms) {
       return new Promise((resolve) => setTimeout(resolve, ms));
     }
