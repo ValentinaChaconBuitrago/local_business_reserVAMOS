@@ -6,7 +6,7 @@ function MongoUtils() {
 
   mu.connect = () => {
     const uri =
-      "mongodb+srv://@cluster0-wnneh.azure.mongodb.net/test?retryWrites=true&w=majority";
+      "mongodb+srv://val:val@cluster0-wnneh.azure.mongodb.net/test?retryWrites=true&w=majority";
     const client = new MongoClient(
       uri,
       { useNewUrlParser: true },

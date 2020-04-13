@@ -22,7 +22,7 @@ const parseAddress = (address) => {
 };
 
 const getLocation = (address) => {
-  let key = "";
+  let key = "AIzaSyBGScN3dzq3j5Pxfzi2EIF5-mnCatkqOE4";
   let direccion =
     "https://maps.googleapis.com/maps/api/geocode/json?address=" +
     address +
