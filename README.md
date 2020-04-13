@@ -57,4 +57,4 @@ After this, the application will be available at http://localhost:3000/
 [Microshopping](https://bogota-restaurants.herokuapp.com/)
 
 ## License
-[MIT License](https://github.com/ValentinaChaconBuitrago/Microshopping/blob/master/LICENSE)
+[MIT License](https://github.com/ValentinaChaconBuitrago/local_business/blob/master/LICENSE)
