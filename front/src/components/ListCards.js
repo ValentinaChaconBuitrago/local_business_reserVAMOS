@@ -27,19 +27,9 @@ function calc(lat1, lat2, lon1, lon2) {
 }
 
 const ListCards = (props) => {
-  const [lat, setLat] = useState(null);
-  const [lon, setLon] = useState(null);
-  useEffect(() => {
-    //obtiene la ubicacion del usuario
-    const geo = navigator.geolocation.getCurrentPosition(function success(pos) {
-      var crd = pos.coords;
-      setLat(crd.latitude);
-      setLon(crd.longitude);
-    });
-  }, []);
   let objetos = [];
   props.stores.map((item) => {
-    let dist = calc(lat, item.position.lat, lon, item.position.lng);
+    let dist = calc(props.lat, item.position.lat, props.lon, item.position.lng);
     item.dist = dist;
     objetos.push(item);
   });
@@ -53,7 +43,7 @@ const ListCards = (props) => {
       <ul>
         {objetos.map((item) => (
           <div key={item._id}>
-            <Card item={item} lat={lat} lon={lon}></Card>
+            <Card item={item} lat={props.lat} lon={props.lon}></Card>
           </div>
         ))}
       </ul>
