@@ -1,23 +1,20 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-
 const Profile = (props) => {
   return (
     <div className="container">
       <div className="row">
-        <div className="col-sm-6">
+        <div className="col-md-6">
           <div className="well">
             <h3>
-              <span className="fa fa-user"></span> User details
+              <span className="fa fa-user"></span> Información del usuario
             </h3>
 
             <p>
-              <strong>id</strong>: {props._id}
+              <strong>Usuario</strong>: {props.username}
               <br />
-              <strong>username</strong>: {props.username}
-              <br />
-              <strong>password</strong>: {props.password}
+              <strong>Contraseña</strong>: *****
             </p>
           </div>
         </div>

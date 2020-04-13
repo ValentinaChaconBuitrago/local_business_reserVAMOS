@@ -1,31 +1,48 @@
-import React, { useState, useEffect } from "react";
+/*
+Componente que renderiza cada tienda en un card
+*/
+import React, { useState } from "react";
 import PropTypes from "prop-types";
-
+import StarRatingComponent from "react-star-rating-component";
 //Props va a recibir las preguntas de la base de datos
-function calc(lat1, lat2, lon1, lon2) {
-  console.log("CALC", lat1, lat2, lon1, lon2);
-  var R = 6371e3; // metres
-  var φ1 = (lat1 * Math.PI) / 180;
-  var φ2 = (lat2 * Math.PI) / 180;
-  var Δφ = ((lat2 - lat1) * Math.PI) / 180;
-  var Δλ = ((lon2 - lon1) * Math.PI) / 180;
-
-  var a =
-    Math.sin(Δφ / 2) * Math.sin(Δφ / 2) +
-    Math.cos(φ1) * Math.cos(φ2) * Math.sin(Δλ / 2) * Math.sin(Δλ / 2);
-  var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
-
-  var d = R * c;
-
-  d = d / 1000;
-  d = d * 10;
-  d = d | 0;
-  return d / 10;
+//funcion que actualiza el rating de la tienda
+function updateRating(id, rate) {
+  fetch("/store/" + id, {
+    method: "PUT", // or 'PUT'
+    body: rate,
+    headers: {
+      "Content-Type": "application/json",
+    }, // data can be `string` or {object}!
+  })
+    .then((res) => res.json())
+    .then(
+      (result) => {},
+      // Nota: es importante manejar errores aquí y no en
+      // un bloque catch() para que no interceptemos errores
+      // de errores reales en los componentes.
+      (error) => {
+        console.log("fallamos");
+      }
+    );
 }
-function details() {}
+function onStarClick(nextValue, prevValue, name) {
+  let f = name.split("#");
+  let id = f[0];
+  let nRatings = parseInt(f[2]);
+  let old = parseInt(f[1]);
+  let newR = (old * nRatings + nextValue) / (nRatings + 1);
+  nRatings = nRatings + 1;
+
+  let rate = JSON.stringify({
+    rating: newR,
+    nRatings: nRatings,
+  });
+  updateRating(id, rate);
+}
 
 const Card = (props) => {
   const [isClicked, setIsClicked] = useState(false);
+
   if (!isClicked) {
     return (
       <div>
@@ -35,17 +52,36 @@ const Card = (props) => {
           style={{ maxWidth: "50ww%" }}
         >
           <div className="card-header">
-            A{" "}
-            {calc(
-              props.item.position.lat,
-              props.lat,
-              props.item.position.lng,
-              props.lon
-            )}{" "}
-            Km de distancia
+            <div className="row">
+              <div className="col-6">
+                <div>A {props.item.dist} Km de distancia</div>
+              </div>
+            </div>
           </div>
           <div className="card-body text-dark">
-            <h5 className="card-title">{props.item.name}</h5>
+            <div className="row">
+              <div className="col-8">
+                <h5 className="card-title">{props.item.name}</h5>
+              </div>
+              <div className="col-4">
+                <div className="d-flex flex-row-reverse">
+                  <div className="p-2">
+                    <StarRatingComponent
+                      name={
+                        props.item._id +
+                        "#" +
+                        props.item.rating +
+                        "#" +
+                        props.item.nRatings
+                      }
+                      starCount={5}
+                      value={props.item.rating}
+                      onStarClick={() => {}}
+                    />
+                  </div>
+                </div>
+              </div>
+            </div>
             <div className="row">
               <div className="col-md-8">
                 <p className="card-text">{props.item.description}</p>
@@ -53,7 +89,7 @@ const Card = (props) => {
                 <a>
                   <button
                     type="button"
-                    class="btn btn-secondary"
+                    className="btn btn-secondary"
                     onClick={() => {
                       setIsClicked(true);
                     }}
@@ -86,16 +122,7 @@ const Card = (props) => {
         >
           <div className="card-header">
             <div className="row">
-              <div className="col-8">
-                A{" "}
-                {calc(
-                  props.item.position.lat,
-                  props.lat,
-                  props.item.position.lng,
-                  props.lon
-                )}{" "}
-                Km de distancia
-              </div>
+              <div className="col-8">A {props.item.dist} Km de distancia</div>
               <div className="col-4">
                 <button
                   type="button"
@@ -111,14 +138,17 @@ const Card = (props) => {
             </div>
           </div>
           <div className="card-body text-dark">
-            <h5 className="card-title">{props.item.name}</h5>
+            <div className="col-8">
+              <h5 className="card-title">{props.item.name}</h5>
+            </div>
+
             <div className="row">
               <div className="col-md-8">
                 <p className="card-text">{props.item.description}</p>
 
-                <p className="card-text">{props.item.phone}</p>
+                <p className="card-text">Teléfono: {props.item.phone}</p>
 
-                <p className="card-text">{props.item.address}</p>
+                <p className="card-text">Dirección: {props.item.address}</p>
               </div>
               <div className="col-md-4">
                 <div className="embed-responsive embed-responsive-16by9">
@@ -127,6 +157,32 @@ const Card = (props) => {
                     className="card-img-top embed-responsive-item"
                     src={props.item.image}
                   />
+                </div>
+              </div>
+            </div>
+            <div>
+              <div>
+                <div>
+                  <p></p>
+                  <p className="font-weight-bold">Deja una calificación!</p>
+                </div>
+                <div>
+                  <div className="d-flex flex-row">
+                    <div className="p-2">
+                      <StarRatingComponent
+                        name={
+                          props.item._id +
+                          "#" +
+                          props.item.rating +
+                          "#" +
+                          props.item.nRatings
+                        }
+                        starCount={5}
+                        value={0}
+                        onStarClick={onStarClick.bind(this)}
+                      />
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
@@ -139,8 +195,6 @@ const Card = (props) => {
 
 Card.propTypes = {
   item: PropTypes.object.isRequired,
-  lat: PropTypes.number.isRequired,
-  lon: PropTypes.number.isRequired,
 };
 
 export default Card;

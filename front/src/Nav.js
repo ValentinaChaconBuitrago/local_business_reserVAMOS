@@ -7,25 +7,6 @@ const Nav = () => {
     color: "white",
   };
 
-  /*
-
-  return (
-    <nav className="nav-bar">
-      <h3>Logo</h3>
-      <ul className="nav-links">
-        <Link style={navStyle} to="/">
-          <li>Home</li>
-        </Link>
-        <Link style={navStyle} to="/login">
-          <li>Login</li>
-        </Link>
-        <Link style={navStyle} to="/signup">
-          <li>Signup</li>
-        </Link>
-      </ul>
-    </nav>
-  );*/
-
   return (
     <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
       <Link to="/" className="navbar-brand">
@@ -46,7 +27,7 @@ const Nav = () => {
       <div className="collapse navbar-collapse">
         <ul className="navbar-nav">
           <Link to="/" className="nav-link">
-            <li className="nav-item active">Home</li>
+            <li className="nav-item active">Inicio</li>
             <span className="sr-only">(current)</span>
           </Link>
         </ul>
@@ -55,11 +36,11 @@ const Nav = () => {
       <div id="navbarNav">
         <ul className="navbar-nav navbar-right">
           <Link to="/signup" className="nav-link btn-info navbar-btn">
-            <li>Signup</li>
+            <li>Registrarse</li>
             <span className="sr-only">(current)</span>
           </Link>
           <Link to="/login" className="nav-link">
-            <li>Login</li>
+            <li>Ingresar</li>
             <span className="sr-only">(current)</span>
           </Link>
         </ul>

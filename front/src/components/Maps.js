@@ -1,3 +1,6 @@
+/*
+Este componente maneja el api de google maps y renderiza el mapa con todos los marcadores respectivos
+*/
 import {
   withGoogleMap,
   GoogleMap,

@@ -22,8 +22,8 @@ const Login = () => {
     <div>
       {!user ? (
         <div>
-        <Nav></Nav>
-        <FormLogin></FormLogin>
+          <Nav></Nav>
+          <FormLogin></FormLogin>
         </div>
       ) : (
         <div>
@@ -39,7 +39,7 @@ const Login = () => {
             </div>
             <div className="col-sm-3 col-sm-offset-3">
               <button onClick={onLogout} className="btn btn-primary">
-                Logout
+                Cerrar sesión
               </button>
             </div>
           </div>

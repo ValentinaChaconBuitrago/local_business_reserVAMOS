@@ -1,24 +1,25 @@
+/*
+Este es el componente principal del cliente
+*/
 import React, { useState, useEffect } from "react";
-import Questions from "./Questions.js";
+import ListCards from "./ListCards.js";
 import Nav from "../Nav.js";
 import Maps from "./Maps.js";
 import "../Client.css";
 
-const apikey = process.env.REACT_APP_GOOGLEAPIKEY;
+const apikey = "";
 
 const googlemapsurl =
   "https://maps.googleapis.com/maps/api/js?key=" +
   apikey +
   "&libraries=geometry,drawing,places";
 const Client = () => {
+  //variables de estado
   const [error, setError] = useState(null);
   const [isLoaded, setIsLoaded] = useState(false);
   const [items, setItems] = useState([]);
   const [lat, setLat] = useState(null);
   const [lon, setLon] = useState(null);
-  const [currentPage, setCurrentPage] = useState([1]);
-  const [currentItems, setCurrentItems] = useState([]);
-  const [itemsPerPage, setIiemsPerPage] = useState([10]);
 
   // Note: the empty deps array [] means
   // this useEffect will run once
@@ -29,7 +30,10 @@ const Client = () => {
       setLat(crd.latitude);
       setLon(crd.longitude);
     });
-
+    function sleep(ms) {
+      return new Promise((resolve) => setTimeout(resolve, ms));
+    }
+    sleep(4000);
     fetch("./getRestaurants")
       .then((res) => res.json())
       .then(
@@ -51,9 +55,6 @@ const Client = () => {
   } else if (!isLoaded) {
     return <div>Loading...</div>;
   } else {
-    const indexLastITem = currentPage * itemsPerPage;
-    const indexFirstItem = indexLastITem - itemsPerPage;
-
     return (
       <div className="Client">
         <Nav></Nav>
@@ -67,7 +68,7 @@ const Client = () => {
         <div>
           <div className="row row-height">
             <div id="storesDiv" className="col-md-6 left ">
-              <Questions stores={items} lat={lat} lon={lon}></Questions>
+              <ListCards stores={items} lat={lat} lon={lon}></ListCards>
             </div>
 
             <div className="col-md-6 ">

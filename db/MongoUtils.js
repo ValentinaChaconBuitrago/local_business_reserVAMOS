@@ -82,6 +82,23 @@ function MongoUtils() {
         client.close();
       });
   };
+  mu.updateShop = (client, body, id, callback) => {
+    const col = client.db("web").collection("stores");
+    console.log(body);
+    console.log(id);
+    let resp = col.updateOne(
+      { _id: ObjectId(id) },
+      { $set: body },
+      // eslint-disable-next-line no-unused-vars
+      function (err, res) {
+        if (err) throw err;
+        console.log("1 document updated");
+        client.close();
+      }
+    );
+    console.log(resp);
+    callback("OK");
+  };
   return mu;
 }
 

@@ -8,30 +8,30 @@ const FormSignup = () => {
 
         <div className="col-sm-4 col-sm-offset-3">
           <h1>
-            <span className="fa fa-sign-in"></span> Signup
+            <span className="fa fa-sign-in"></span> Registrarse
           </h1>
 
           <form action="/signup" method="post">
             <div className="form-group">
-              <label>Username</label>
+              <label>Usuario</label>
               <input type="text" className="form-control" name="username" />
             </div>
             <div className="form-group">
-              <label>Password</label>
+              <label>Contraseña</label>
               <input type="password" className="form-control" name="password" />
             </div>
 
             <button type="submit" className="btn btn-warning btn-lg">
-              Signup
+              Registrarse
             </button>
           </form>
           <hr />
 
           <p>
-            Already have an account? <a href="/login">Login</a>
+            Ya tiene una cuenta? <a href="/login">Ingresar</a>
           </p>
           <p>
-            Or go <a href="/">home</a>.
+            Ir a<a href="/"> Inicio</a>.
           </p>
         </div>
       </div>

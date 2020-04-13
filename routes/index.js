@@ -22,7 +22,7 @@ const parseAddress = (address) => {
 };
 
 const getLocation = (address) => {
-  let key = "AIzaSyBA6TIHespjF9waFiK_cpm7eXQSBCNg4lk";
+  let key = "AIzaSyBGScN3dzq3j5Pxfzi2EIF5-mnCatkqOE4";
   let direccion =
     "https://maps.googleapis.com/maps/api/geocode/json?address=" +
     address +
@@ -40,11 +40,12 @@ router.post("/addStore", function (req, res) {
   const processData = () => {
     getLocation(newAddress)
       .then((address) => {
-        console.log("address inside promise", address);
-        console.log("adress coords", address.results[0].geometry.location);
         body.position = address.results[0].geometry.location;
       })
       .catch((err) => console.log(err));
+    body.rating = 5;
+    body.nRatings = 1;
+    body.comments = [];
 
     mu.insertBusiness(body)
       .then((doc) => {
@@ -107,15 +108,12 @@ router.post("/restaurant", function (req, res) {
     //for Front side rendering send the html instead of the json file
     .catch((err) => console.log(err));
 });
-router.put("/restaurant/:id", function (req, res) {
+router.put("/store/:id", function (req, res) {
   var body = req.body;
-  let id = req.param.id;
+  const id = req.params.id;
+
   mu.connect()
-    .then((client) =>
-      mu.updateRestaurant(client, body, id, (restaurant) =>
-        res.json(restaurant)
-      )
-    )
+    .then((client) => mu.updateShop(client, body, id, (shop) => res.json(shop)))
     .catch((err) => console.log(err));
 });
 module.exports = router;
