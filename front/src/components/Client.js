@@ -18,8 +18,8 @@ const Client = () => {
   const [error, setError] = useState(null);
   const [isLoaded, setIsLoaded] = useState(false);
   const [items, setItems] = useState([]);
-  const [lat, setLat] = useState(null);
-  const [lon, setLon] = useState(null);
+  const [lat, setLat] = useState(4.7108341);
+  const [lon, setLon] = useState(-74.0490092);
 
   // Note: the empty deps array [] means
   // this useEffect will run once
