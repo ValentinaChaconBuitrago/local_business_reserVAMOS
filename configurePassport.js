@@ -1,8 +1,8 @@
 const passport = require("passport");
 const Strategy = require("passport-local").Strategy;
-var db = require("./db");
-const MongoUtils = require("./db/MongoUtils.js");
-const mu = MongoUtils();
+var db = require("./db"); // Cambiar a Const
+const MongoUtils = require("./db/MongoUtils.js"); 
+const mu = MongoUtils(); 
 
 // Configure the local strategy for use by Passport.
 //
