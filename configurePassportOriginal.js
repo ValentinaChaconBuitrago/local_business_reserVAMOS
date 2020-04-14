@@ -1,3 +1,5 @@
+/* Creo que este archivo de configure Passport original no es usado y solo utilizan el anterior, consideraria mejor borrarlo de ser el caso para no tener confuciones posibles futuras
+*/
 const passport = require("passport");
 const Strategy = require("passport-local").Strategy;
 
