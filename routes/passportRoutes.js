@@ -3,15 +3,12 @@ const passport = require("passport");
 const router = express.Router();
 
 // Define routes.
-router.get("/login", function (req, res) {
-  res.render("login2");
-});
 
 router.post(
   "/login",
   passport.authenticate("local-login", {
-    successRedirect: "/login",
-    failureRedirect: "/login",
+    successRedirect: "/",
+    failureRedirect: "/",
   }),
   function (req, res) {
     res.redirect("/");
@@ -46,8 +43,8 @@ router.get("/signup", function (req, res) {
 router.post(
   "/signup",
   passport.authenticate("local-signup", {
-    successRedirect: "/login", // redirect to the secure profile section
-    failureRedirect: "/login", // redirect back to the signup page if there is an error
+    successRedirect: "/", // redirect to the secure profile section
+    failureRedirect: "/", // redirect back to the signup page if there is an error
     failureFlash: true, // allow flash messages
   })
 );
