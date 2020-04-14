@@ -38,16 +38,15 @@ router.post("/addStore", function (req, res) {
   let body = req.body;
   const newAddress = parseAddress(body.address);
   const processData = () => {
+    body.rating = 5;
+    body.nRatings = 1;
+    body.comments = [];
     getLocation(newAddress)
       .then((address) => {
         body.position = address.results[0].geometry.location;
       })
-      .catch((err) => console.log(err));
-    body.rating = 5;
-    body.nRatings = 1;
-    body.comments = [];
+      .then(mu.insertBusiness(body))
 
-    mu.insertBusiness(body)
       .then((doc) => {
         res.redirect("/");
       })
