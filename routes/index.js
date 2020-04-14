@@ -22,12 +22,10 @@ const parseAddress = (address) => {
 };
 
 const getLocation = (address) => {
-  let key = "AIzaSyBGScN3dzq3j5Pxfzi2EIF5-mnCatkqOE4";
   let direccion =
     "https://maps.googleapis.com/maps/api/geocode/json?address=" +
     address +
-    "&key=" +
-    key;
+    "&key=AIzaSyBGScN3dzq3j5Pxfzi2EIF5-mnCatkqOE4";
   return fetch(direccion, {
     method: "POST", // or 'PUT'
     body: {}, // data can be `string` or {object}!
@@ -36,17 +34,23 @@ const getLocation = (address) => {
 
 router.post("/addStore", function (req, res) {
   let body = req.body;
-  const newAddress = parseAddress(body.address);
+  let direccion =
+    "https://maps.googleapis.com/maps/api/geocode/json?address=" +
+    body.address +
+    "&key=AIzaSyBGScN3dzq3j5Pxfzi2EIF5-mnCatkqOE4";
+  body.rating = 5;
+  body.nRatings = 1;
+  body.comments = [];
   const processData = () => {
-    body.rating = 5;
-    body.nRatings = 1;
-    body.comments = [];
-    getLocation(newAddress)
+    fetch(direccion, {
+      method: "POST", // or 'PUT'
+      body: {}, // data can be `string` or {object}!
+    })
+      .then((res) => res.json())
       .then((address) => {
         body.position = address.results[0].geometry.location;
       })
       .then(mu.insertBusiness(body))
-
       .then((doc) => {
         res.redirect("/");
       })
