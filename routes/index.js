@@ -10,13 +10,8 @@ router.get("/", function (req, res) {
 });
 
 const parseAddress = (address) => {
-  /*
-  let parts = address.split("#");
-  let nums = parts[1].replace(/ /g, "");
-  let finalNum = nums.split("-");
-  let newAddress = parts[0] + " " + finalNum[0] + finalNum[1];
-  console.log("new address", newAddress);
-  */
+  // Aquí al igual que en otras partes del proyecto tienen codigo comentado, sería buena idea quitarlo
+
   console.log("new address", address);
   return address;
 };
