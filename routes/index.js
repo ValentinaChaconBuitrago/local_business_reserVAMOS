@@ -5,9 +5,6 @@ var fetch = require("node-fetch");
 const mu = MongoUtils();
 
 /* GET home page. */
-router.get("/", function (req, res) {
-  res.render("index", { user: req.user });
-});
 
 const parseAddress = (address) => {
   /*
@@ -25,7 +22,7 @@ const getLocation = (address) => {
   let direccion =
     "https://maps.googleapis.com/maps/api/geocode/json?address=" +
     address +
-    "&key=AIzaSyBGScN3dzq3j5Pxfzi2EIF5-mnCatkqOE4";
+    "&key=";
   return fetch(direccion, {
     method: "POST", // or 'PUT'
     body: {}, // data can be `string` or {object}!
