@@ -59,6 +59,17 @@ function MongoUtils() {
     );
   };
 
+  mu.listenToChanges = (client, notifyAll) => {
+    const collectionRestaurant = client.db("web").collection("stores");
+    //retorna una promesa
+    const cursor = collectionRestaurant.watch();
+
+    cursor.on("change", (data) => {
+      console.log("Mongo change", data);
+      notifyAll("Shit changed");
+    });
+  };
+
   mu.getRestaurants = (client) => {
     const collectionRestaurant = client.db("web").collection("stores");
     //retorna una promesa

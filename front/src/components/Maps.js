@@ -26,11 +26,8 @@ const Maps = withGoogleMap((props) => {
           }}
           key={tienda._id}
           position={tienda.position}
-          onMouseOver={() => {
+          onClick={() => {
             setSelected(tienda);
-          }}
-          onMouseOut={() => {
-            setSelected(null);
           }}
         />
       ))}

@@ -28,7 +28,31 @@ const Client = () => {
     setLat(pos.coords.latitude);
     setLon(pos.coords.longitude);
   });
+  const setWS = () => {
+    var socket = new WebSocket("ws://localhost:3001");
+    socket.onopen = () => {
+      console.log("client connected!");
+      socket.onmessage = (mensaje) => {
+        console.log("mensaje!!!", mensaje);
+
+        fetch("./getRestaurants")
+          .then((res) => res.json())
+          .then(
+            (result) => {
+              setItems(result);
+            },
+            // Nota: es importante manejar errores aquí y no en
+            // un bloque catch() para que no interceptemos errores
+            // de errores reales en los componentes.
+            (error) => {
+              setError(error);
+            }
+          );
+      };
+    };
+  };
   useEffect(() => {
+    setWS();
     const geo = navigator.geolocation.getCurrentPosition(function success(pos) {
       var crd = pos.coords;
       setLat(crd.latitude);
