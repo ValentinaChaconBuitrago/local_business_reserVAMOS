@@ -1313,6 +1313,20 @@ a:hover {
   color: #000000;
 }
 
+.card-box-iconn {
+  padding: 1rem 3rem 1rem 2.5rem;
+  border: 5px solid #2eca6a;
+}
+
+.card-box-iconn span {
+  font-size: 4rem;
+  color: #000000;
+}
+
+.col-md-4{
+  margin-top: 40px;
+}
+
 .title-c {
   font-size: 2.5rem;
   font-weight: 600;

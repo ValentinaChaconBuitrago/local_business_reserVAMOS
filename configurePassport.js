@@ -65,6 +65,8 @@ passport.use(
       passReqToCallback: true, // allows us to pass back the entire request to the callback
     },
     function (req, username, password, cb) {
+      var date = req.body.date;
+      console.log(date);
       // asynchronous
       // User.findOne wont fire unless data is sent back
       process.nextTick(function () {
@@ -79,6 +81,8 @@ passport.use(
             return cb(null, false, console.log("user is already taken"));
           } else {
             console.log(
+              "REQ:",
+              req.body.date,
               "create new user, username",
               username,
               "password:",
@@ -86,7 +90,7 @@ passport.use(
             );
 
 
-            mu.insertDocument(username, password)
+            mu.insertDocument(username, password, req.body.date, req.body.phone)
               .then(() => mu.getUser(username))
               .then((user) => {
                 user.map(u=>{

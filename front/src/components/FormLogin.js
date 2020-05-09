@@ -7,9 +7,25 @@ const FormLogin = () => {
         <div className="col-sm-4 col-sm-offset-3"></div>
 
         <div className="col-sm-4 col-sm-offset-3">
-          <h1>
-            <span className="fa fa-sign-in"></span> Ingresar
-          </h1>
+
+
+          <div className="col-md-4">
+            <div className="card-box-c foo">
+              <div className="card-header-c d-flex">
+                <div className="card-box-iconn">
+                  <span className="fa fa-sign-in"></span>
+                </div>
+                <div className="card-title-c align-self-center">
+                  <h2 className="title-c">Ingreso</h2>
+                </div>
+              </div>
+            </div>
+          </div>
+
+
+
+
+
 
           <form action="/login" method="post">
             <div className="form-group">
@@ -21,7 +37,7 @@ const FormLogin = () => {
               <input type="password" className="form-control" name="password" />
             </div>
 
-            <button type="submit" className="btn btn-warning btn-lg">
+            <button type="submit" className="btn btn-entrar btn-lg">
               Entrar
             </button>
           </form>
