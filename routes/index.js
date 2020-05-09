@@ -34,7 +34,7 @@ router.post("/addStore", function (req, res) {
   let direccion =
     "https://maps.googleapis.com/maps/api/geocode/json?address=" +
     body.address +
-    "&key=AIzaSyBGScN3dzq3j5Pxfzi2EIF5-mnCatkqOE4";
+    "&key=";
   body.rating = 5;
   body.nRatings = 1;
   body.comments = [];

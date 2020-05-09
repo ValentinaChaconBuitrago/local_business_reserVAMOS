@@ -22,3 +22,8 @@ body{
   align-items: center;
   list-style: none;
 }
+
+
+.btn-register {
+    background-color: #2eca6a;
+}

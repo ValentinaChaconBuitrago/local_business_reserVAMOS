@@ -7,29 +7,10 @@ const NavUser = () => {
     color: "white",
   };
 
-  /*
-
-  return (
-    <nav className="nav-bar">
-      <h3>Logo</h3>
-      <ul className="nav-links">
-        <Link style={navStyle} to="/">
-          <li>Home</li>
-        </Link>
-        <Link style={navStyle} to="/login">
-          <li>Login</li>
-        </Link>
-        <Link style={navStyle} to="/signup">
-          <li>Signup</li>
-        </Link>
-      </ul>
-    </nav>
-  );*/
-
   return (
     <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
       <Link to="/" className="navbar-brand">
-        MicroShopping
+        ReserVAMOS
       </Link>
       <button
         className="navbar-toggler"
@@ -46,7 +27,11 @@ const NavUser = () => {
       <div className="collapse navbar-collapse">
         <ul className="navbar-nav">
           <Link to="/" className="nav-link">
-            <li className="nav-item active">Home</li>
+            <li className="nav-item active">Inicio</li>
+            <span className="sr-only">(current)</span>
+          </Link>
+          <Link to="/client" className="nav-link">
+            <li className="nav-item active">Reservar</li>
             <span className="sr-only">(current)</span>
           </Link>
         </ul>
@@ -54,12 +39,12 @@ const NavUser = () => {
 
       <div id="navbarNav">
         <ul className="navbar-nav navbar-right">
-          <Link to="/login" className="nav-link btn-info navbar-btn">
-            <li>Profile</li>
+          <Link to="/login" className="nav-link btn-register navbar-btn">
+            <li>Perfil</li>
             <span className="sr-only">(current)</span>
           </Link>
           <Link to="/formAddStore" className="nav-link">
-            <li>Add Business</li>
+            <li>Nuevo Establecimiento</li>
             <span className="sr-only">(current)</span>
           </Link>
         </ul>

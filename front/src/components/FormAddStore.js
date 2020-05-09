@@ -7,7 +7,7 @@ const FormAddStore = () => {
       <NavUser></NavUser>
       <div className="container">
         <h1>
-          <span className="fa fa-shopping-cart"></span> Agregar un negocio
+          <span className="fa fa-shopping-cart"></span> Agregar un Establecimiento
         </h1>
         <div className="row">
           <div className="col-sm-4 col-sm-offset-3"></div>
@@ -61,7 +61,7 @@ const FormAddStore = () => {
                 ></textarea>
               </div>
               <button type="submit" className="btn btn-info btn-lg">
-                Agragar negocio
+                Agregar negocio
               </button>
               <hr />
             </form>

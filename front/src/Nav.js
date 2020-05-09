@@ -10,7 +10,7 @@ const Nav = () => {
   return (
     <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
       <Link to="/" className="navbar-brand">
-        MicroShopping
+        ReserVAMOS
       </Link>
       <button
         className="navbar-toggler"
@@ -30,12 +30,16 @@ const Nav = () => {
             <li className="nav-item active">Inicio</li>
             <span className="sr-only">(current)</span>
           </Link>
+          <Link to="/client" className="nav-link">
+            <li className="nav-item active">Reservar</li>
+            <span className="sr-only">(current)</span>
+          </Link>
         </ul>
       </div>
 
       <div id="navbarNav">
         <ul className="navbar-nav navbar-right">
-          <Link to="/signup" className="nav-link btn-info navbar-btn">
+          <Link to="/signup" className="nav-link btn-register navbar-btn">
             <li>Registrarse</li>
             <span className="sr-only">(current)</span>
           </Link>

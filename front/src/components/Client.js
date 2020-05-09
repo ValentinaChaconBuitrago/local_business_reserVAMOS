@@ -66,7 +66,7 @@ const Client = () => {
         <div>
           <div>
             <h1 className="display-4 " id="storesTitle">
-              Tiendas cercanas
+              Reserva
             </h1>
           </div>
         </div>
