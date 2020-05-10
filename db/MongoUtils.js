@@ -54,7 +54,12 @@ function MongoUtils() {
       client
         .db("authentication")
         .collection("users")
-        .insertOne({ username: pUsername, password: pPassword, date: pDate, phone: pPhone })
+        .insertOne({
+          username: pUsername,
+          password: pPassword,
+          date: pDate,
+          phone: pPhone,
+        })
         .finally(() => client.close())
     );
   };
