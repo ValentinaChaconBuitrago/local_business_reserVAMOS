@@ -28,7 +28,7 @@ app.use("/", indexRouter);
 app.use("/", passportRouter);
 */
 app.use("/", indexRouter);
-app.use("/", passportRouter);
+app.use("/a", passportRouter);
 app.get("*", (req, res) => {
   res.sendFile("index.html", { root: path.join(__dirname, "front/build") });
 });

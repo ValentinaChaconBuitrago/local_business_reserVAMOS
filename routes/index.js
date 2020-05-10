@@ -83,9 +83,12 @@ router.get("/reservations/:idRest/:fecha", (req, res) => {
     .then((user) => res.json(user))
     .catch((err) => console.log(err));
 });
-router.get("/available/:idRest/:fecha", (req, res) => {
+router.get("/available/:idRest/:fecha/:nPersonas/:nMax", (req, res) => {
   const id = req.params.idRest;
   const fecha = req.params.fecha;
+  const nPersonas = req.params.nPersonas;
+  const nMax = req.params.nMax;
+
   let horas = [
     "12:00",
     "13:00",
@@ -116,22 +119,28 @@ router.get("/available/:idRest/:fecha", (req, res) => {
           ? counts[btn.hora]
           : counts[btn.hora] + btn.nPersonas;
       });
-
-      console.log(counts);
-      res.json(counts);
+      let respu = [];
+      horas.forEach((hora) => {
+        if (counts[hora] + nPersonas <= nMax) {
+          respu.push(hora);
+        }
+      });
+      console.log(respu);
+      res.json(respu);
     })
 
     .catch((err) => console.log(err));
 });
 
-router.post("/reservation", function (req, res) {
+router.post("/reservation/:idRes", function (req, res) {
   let body = req.body;
+  body.idRes = req.params.idRes;
   //Client side rendering
   mu.connect()
     .then((client) =>
       mu.crearReserva(client, body, (restaurant) => res.json(restaurant))
     )
-    .then(res.send("ok"))
+    .then(res.redirect("/client"))
     //for Front side rendering send the html instead of the json file
     .catch((err) => console.log(err));
 });

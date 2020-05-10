@@ -6,10 +6,15 @@ import PropTypes from "prop-types";
 import StarRatingComponent from "react-star-rating-component";
 import Modal from "react-modal";
 import DatePicker from "react-datepicker";
+
+import "react-datepicker/dist/react-datepicker.css";
+
 import "../card.css";
 
 const customStyles = {
   content: {
+    border: "10px",
+    borderColor: "#000000",
     borderRadius: "35px",
     width: "600px",
     height: "500px",
@@ -60,10 +65,17 @@ function onStarClick(nextValue, prevValue, name) {
 const Card = (props) => {
   const [isClicked, setIsClicked] = useState(false);
   const [startDate, setStartDate] = useState(new Date());
+  const [showDatePicker, setShowDatePicker] = useState(false);
+  const [showHoras, setShowHoras] = useState(false);
+  const [showUserInfo, setShowUserInfo] = useState(false);
+
+  const [personas, setPrsonas] = useState(0);
+  const [horarios, setHorarios] = useState([]);
 
   const [modalIsOpen, setIsOpen] = React.useState(false);
   var subtitle;
-
+  const dateChange = (date) => setStartDate(date);
+  function selectedNum(value) {}
   function openModal() {
     setIsOpen(true);
   }
@@ -75,6 +87,30 @@ const Card = (props) => {
 
   function closeModal() {
     setIsOpen(false);
+  }
+  function dateSelected(date) {
+    setStartDate(date);
+    fetch(
+      "./available/" +
+        props.item._id +
+        "/" +
+        startDate +
+        "/" +
+        personas +
+        "/" +
+        props.item.nMax
+    )
+      .then((res) => res.json())
+      .then(
+        (result) => {
+          console.log(result);
+          setHorarios(result);
+          setShowHoras(true);
+        }
+        // Nota: es importante manejar errores aquí y no en
+        // un bloque catch() para que no interceptemos errores
+        // de errores reales en los componentes.
+      );
   }
 
   {
@@ -91,39 +127,116 @@ const Card = (props) => {
             <h2 ref={(_subtitle) => (subtitle = _subtitle)}>
               {props.item.name}
             </h2>
-            <button onClick={closeModal}>close</button>
-            <div>{props.item.foodType}</div>
-            <form>
+            <h5>Hacer una reserva:</h5>
+            <form action={"/reservation/" + props.item._id} method="post">
               <div className="form-group">
-                <label for="exampleFormControlInput1">Email address</label>
-                <input
-                  type="email"
-                  className="form-control"
-                  id="exampleFormControlInput1"
-                  placeholder="name@example.com"
-                ></input>
-              </div>
-              <div className="form-group">
-                <label for="exampleFormControlSelect1">Example select</label>
+                <label for="exampleFormControlSelect1">
+                  ¿Para cuantas personas?
+                </label>
                 <select
-                  onChange={() => {
-                    alert("JEJE");
+                  onChange={(value) => {
+                    setPrsonas(value.target.value);
+                    setShowDatePicker(true);
                   }}
                   className="form-control"
+                  type="number"
+                  name="nPersonas"
                   id="exampleFormControlSelect1"
                 >
-                  <option>-</option>
+                  <option
+                    onSelect={() => {
+                      setShowDatePicker(false);
+                    }}
+                  >
+                    -
+                  </option>
                   <option>1</option>
                   <option>2</option>
                   <option>3</option>
                   <option>4</option>
                   <option>5</option>
+                  <option>6</option>
+                  <option>7</option>
+                  <option>8</option>
+                  <option>9</option>
+                  <option>10</option>
                 </select>
               </div>
+              {showDatePicker ? (
+                <div className="form-group">
+                  <label>¿Cuando?</label>
 
-              <button type="submit" class="btn btn-default">
-                Submit
-              </button>
+                  <DatePicker
+                    dateFormat="yyyy-MM-dd"
+                    selected={startDate}
+                    onChange={(date) => {
+                      dateSelected(date);
+                    }}
+                    className="form-control"
+                    name="fecha"
+                  />
+                </div>
+              ) : null}
+
+              {showHoras ? (
+                <div className="form-group">
+                  <label for="exampleFormControlSelect1">¿A que hora?</label>
+                  <select
+                    onChange={() => {
+                      setShowDatePicker(true);
+                      setShowUserInfo(true);
+                    }}
+                    className="form-control"
+                    id="exampleFormControlSelect1"
+                    type="text"
+                    className="form-control"
+                    name="hora"
+                  >
+                    {horarios.map((item) => (
+                      <option key={item} value={item}>
+                        {item}
+                      </option>
+                    ))}
+                  </select>
+                </div>
+              ) : null}
+              {showUserInfo ? (
+                <div>
+                  <div className="form-group">
+                    <label>Nombre</label>
+                    <input
+                      type="text"
+                      className="form-control"
+                      id="exampleFormControlInput1"
+                      placeholder="Pablo Pérez"
+                      name="nombre"
+                    ></input>
+                  </div>
+                  <div className="form-group">
+                    <label for="exampleFormControlInput1">Email address</label>
+                    <input
+                      type="email"
+                      className="form-control"
+                      id="exampleFormControlInput1"
+                      placeholder="name@example.com"
+                      name="correo"
+                    ></input>
+                  </div>
+                  <div className="form-group">
+                    <label>Celular</label>
+                    <input
+                      type="number"
+                      className="form-control"
+                      id="exampleFormControlInput1"
+                      placeholder="3103216457"
+                      name="celular"
+                    ></input>
+                  </div>
+                  <button type="submit" class="btn btn-info btn-lg">
+                    Reservar
+                  </button>
+                </div>
+              ) : null}
             </form>
           </Modal>
         </div>
@@ -164,12 +277,7 @@ const Card = (props) => {
             <div className="row">
               <div className="col-md-8">
                 <p className="card-text">{props.item.description}</p>
-                <div>
-                  <DatePicker
-                    selected={startDate}
-                    onChange={(date) => setStartDate(date)}
-                  ></DatePicker>
-                </div>
+
                 <button
                   type="button"
                   className="botonCrearReserva"
