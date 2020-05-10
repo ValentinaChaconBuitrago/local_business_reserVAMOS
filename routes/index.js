@@ -18,23 +18,14 @@ const parseAddress = (address) => {
   return address;
 };
 
-const getLocation = (address) => {
-  let direccion =
-    "https://maps.googleapis.com/maps/api/geocode/json?address=" +
-    address +
-    "&key=";
-  return fetch(direccion, {
-    method: "POST", // or 'PUT'
-    body: {}, // data can be `string` or {object}!
-  }).then((res) => res.json());
-};
-
+const apikey = "AIzaSyAxuz7I_RIBLNfgYVdi1BsBw6b_TsBk0_s";
 router.post("/addStore", function (req, res) {
   let body = req.body;
   let direccion =
     "https://maps.googleapis.com/maps/api/geocode/json?address=" +
     body.address +
-    "&key=";
+    "&key=" +
+    apikey;
   body.rating = 5;
   body.nRatings = 1;
   body.comments = [];
@@ -45,11 +36,22 @@ router.post("/addStore", function (req, res) {
     })
       .then((res) => res.json())
       .then((address) => {
-        body.position = address.results[0].geometry.location;
+        if (address.results.length > 0) {
+          body.position = address.results[0].geometry.location;
+          return true;
+        } else {
+          return false;
+        }
       })
-      .then(mu.insertBusiness(body))
+      .then((bool) => {
+        if (bool) {
+          mu.insertBusiness(body);
+        } else {
+          res.send("No se encontró la direccion");
+        }
+      })
       .then((doc) => {
-        res.redirect("/");
+        res.send("ok");
       })
       .catch((err) => console.log(err));
   };
@@ -73,7 +75,66 @@ router.get("/shop/:id", (req, res) => {
     .then((user) => res.json(user))
     .catch((err) => console.log(err));
 });
+router.get("/reservations/:idRest/:fecha", (req, res) => {
+  const id = req.params.idRest;
+  const fecha = req.params.fecha;
+  mu.connect()
+    .then((client) => mu.getReserva(client, id, fecha))
+    .then((user) => res.json(user))
+    .catch((err) => console.log(err));
+});
+router.get("/available/:idRest/:fecha", (req, res) => {
+  const id = req.params.idRest;
+  const fecha = req.params.fecha;
+  let horas = [
+    "12:00",
+    "13:00",
+    "14:00",
+    "15:00",
+    "16:00",
+    "17:00",
+    "18:00",
+    "19:00",
+    "20:00",
+    "21:00",
+    "22:00",
+  ];
+  let materias = horas;
 
+  const counts = Object.create(null);
+  materias.forEach((btn) => {
+    counts[btn] = counts[btn] ? counts[btn] + 1 : 0;
+  });
+
+  let reservas = [];
+  mu.connect()
+    .then((client) => mu.getReserva(client, id, fecha))
+    .then((user) => {
+      reservas = user;
+      reservas.forEach((btn) => {
+        counts[btn.hora] = counts[btn.hora]
+          ? counts[btn.hora]
+          : counts[btn.hora] + btn.nPersonas;
+      });
+
+      console.log(counts);
+      res.json(counts);
+    })
+
+    .catch((err) => console.log(err));
+});
+
+router.post("/reservation", function (req, res) {
+  let body = req.body;
+  //Client side rendering
+  mu.connect()
+    .then((client) =>
+      mu.crearReserva(client, body, (restaurant) => res.json(restaurant))
+    )
+    .then(res.send("ok"))
+    //for Front side rendering send the html instead of the json file
+    .catch((err) => console.log(err));
+});
 router.get("/usuarios/:id", (req, res) => {
   const id = req.params.id;
   mu.connect()

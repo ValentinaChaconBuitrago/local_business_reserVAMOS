@@ -1,0 +1,15 @@
+.botonCrearReserva {
+  color: #000000;
+  padding: 1rem 1rem;
+  border: 2px solid #329232;
+  border-radius: 50px;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+#headerCard {
+  color: #ffffff;
+  background-color: #941e1e;
+}
+#stars {
+  height: 10px;
+}

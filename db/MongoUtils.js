@@ -43,7 +43,7 @@ function MongoUtils() {
     return mu.connect().then((client) =>
       client
         .db("web")
-        .collection("stores")
+        .collection("restaurantes")
         .insertOne(data)
         .finally(() => client.close())
     );
@@ -92,6 +92,27 @@ function MongoUtils() {
         console.log("closing client");
         client.close();
       });
+  };
+  mu.getReserva = (client, idRestaurante, fecha) => {
+    const collectionRestaurant = client.db("web").collection("reservas");
+    //retorna una promesa
+    let obj = { idRes: idRestaurante, fecha: fecha };
+    console.log(obj);
+    return collectionRestaurant
+      .find(obj)
+      .toArray()
+      .finally(() => {
+        console.log("closing client");
+        client.close();
+      });
+  };
+  mu.crearReserva = (client, body) => {
+    const collectionRestaurant = client.db("web").collection("reservas");
+    //retorna una promesa
+    return collectionRestaurant.insertOne(body).finally(() => {
+      console.log("closing client");
+      client.close();
+    });
   };
   mu.updateShop = (client, body, id, callback) => {
     const col = client.db("web").collection("stores");

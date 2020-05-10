@@ -2,7 +2,22 @@
   text-align: left;
 }
 #storesTitle {
+  font-size: 7vw;
   text-align: center;
+  color: white;
+  vertical-align: middle;
+  font-weight: bold;
+}
+#storesTittleDiv {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 300px;
+  background-image: url("./images/reservas.jpg");
+  background-position: center;
+}
+#storesTittleDiv2 {
+  height: 20px;
 }
 
 .row-height {

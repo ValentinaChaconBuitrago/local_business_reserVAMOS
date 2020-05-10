@@ -88,11 +88,15 @@ const Client = () => {
       <div className="Client">
         <Nav></Nav>
         <div>
-          <div>
-            <h1 className="display-4 " id="storesTitle">
-              Reserva
+          <div id="storesTittleDiv">
+            <h1 id="storesTitle" className="intro-title mb-4">
+              Restaurantes
             </h1>
           </div>
+          <br></br>
+
+          <br></br>
+          <div className="storesTittleDiv2"></div>
         </div>
         <div>
           <div className="row row-height">

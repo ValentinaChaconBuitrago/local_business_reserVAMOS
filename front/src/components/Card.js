@@ -4,6 +4,19 @@ Componente que renderiza cada tienda en un card
 import React, { useState } from "react";
 import PropTypes from "prop-types";
 import StarRatingComponent from "react-star-rating-component";
+import Modal from "react-modal";
+import "../card.css";
+
+const customStyles = {
+  content: {
+    top: "50%",
+    left: "50%",
+    right: "auto",
+    bottom: "auto",
+    marginRight: "-50%",
+    transform: "translate(-50%, -50%)",
+  },
+};
 //Props va a recibir las preguntas de la base de datos
 //funcion que actualiza el rating de la tienda
 function updateRating(id, rate) {
@@ -43,15 +56,40 @@ function onStarClick(nextValue, prevValue, name) {
 const Card = (props) => {
   const [isClicked, setIsClicked] = useState(false);
 
+  const [modalIsOpen, setIsOpen] = React.useState(false);
+  var subtitle;
+
+  function openModal() {
+    setIsOpen(true);
+  }
+
+  function afterOpenModal() {
+    // references are now sync'd and can be accessed.
+    subtitle.style.color = "#f00";
+  }
+
+  function closeModal() {
+    setIsOpen(false);
+  }
+
   {
     return (
       <div>
-        <div
-          className="card border-dark mb-3"
-          key={props.item._id}
-          style={{ maxWidth: "50ww%" }}
-        >
-          <div className="card-header">
+        <div>
+          <Modal
+            isOpen={modalIsOpen}
+            onAfterOpen={afterOpenModal}
+            onRequestClose={closeModal}
+            style={customStyles}
+            contentLabel="Example Modal"
+          >
+            <h2 ref={(_subtitle) => (subtitle = _subtitle)}>Hello</h2>
+            <button onClick={closeModal}>close</button>
+            <div>I am a modal</div>
+          </Modal>
+        </div>
+        <div key={props.item._id} style={{ maxWidth: "50ww%" }}>
+          <div className="card-header" id="headerCard">
             <div className="row">
               <div className="col-6">
                 <div>A {props.item.dist} Km de distancia</div>
@@ -67,6 +105,7 @@ const Card = (props) => {
                 <div className="d-flex flex-row-reverse">
                   <div className="p-2">
                     <StarRatingComponent
+                      id="stars"
                       name={
                         props.item._id +
                         "#" +
@@ -76,6 +115,7 @@ const Card = (props) => {
                       }
                       starCount={5}
                       value={props.item.rating}
+                      emptyStarColor={"#e0e0e0"}
                       onStarClick={() => {}}
                     />
                   </div>
@@ -89,9 +129,9 @@ const Card = (props) => {
                 <a>
                   <button
                     type="button"
-                    className="btn btn-secondary"
+                    className="botonCrearReserva"
                     onClick={() => {
-                      setIsClicked(true);
+                      openModal();
                     }}
                   >
                     Hacer una reserva

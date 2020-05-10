@@ -14,9 +14,10 @@ let lonActual = 0;
 
 const Maps = withGoogleMap((props) => {
   const [selected, setSelected] = useState(null);
+  const apikey = "AIzaSyAxuz7I_RIBLNfgYVdi1BsBw6b_TsBk0_s";
 
   return (
-    <GoogleMap defaultZoom={14} defaultCenter={props.mar}>
+    <GoogleMap key={apikey} defaultZoom={14} defaultCenter={props.mar}>
       {props.isMarkerShown && <Marker position={props.mar} />}
       {props.tiendas.map((tienda) => (
         <Marker
