@@ -8,8 +8,6 @@ const FormLogin = () => {
         <div className="col-sm-4 col-sm-offset-3"></div>
 
         <div className="col-sm-4 col-sm-offset-3">
-
-
           <div className="col-md-4">
             <div className="card-box-c foo">
               <div className="card-header-c d-flex">
@@ -23,16 +21,26 @@ const FormLogin = () => {
             </div>
           </div>
 
-
-
-          <form action="/login" method="post">
+          <form action="/passport/login" method="post">
             <div className="form-group">
               <label htmlFor="userInput">Usuario</label>
-              <input id="userInput" placeholder="JuanPerez30" type="text" className="form-control" name="username" />
+              <input
+                id="userInput"
+                placeholder="JuanPerez30"
+                type="text"
+                className="form-control"
+                name="username"
+              />
             </div>
             <div className="form-group">
               <label htmlFor="passInput">Contraseña</label>
-              <input id="passInput" placeholder="contraseña" type="password" className="form-control" name="password" />
+              <input
+                id="passInput"
+                placeholder="contraseña"
+                type="password"
+                className="form-control"
+                name="password"
+              />
             </div>
 
             <button type="submit" className="btn btn-entrar btn-lg">

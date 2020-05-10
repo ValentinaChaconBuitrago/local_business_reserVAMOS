@@ -7,11 +7,11 @@ const router = express.Router();
 router.post(
   "/login",
   passport.authenticate("local-login", {
-    successRedirect: "/client",
+    successRedirect: "/login",
     failureRedirect: "/client",
   }),
   function (req, res) {
-    res.redirect("/");
+    res.send("ok");
   }
 );
 
@@ -43,7 +43,7 @@ router.get("/signup", function (req, res) {
 router.post(
   "/signup",
   passport.authenticate("local-signup", {
-    successRedirect: "/client", // redirect to the secure profile section
+    successRedirect: "/login", // redirect to the secure profile section
     failureRedirect: "/client", // redirect back to the signup page if there is an error
     failureFlash: true, // allow flash messages
   })
