@@ -21,7 +21,7 @@ const FormLogin = () => {
             </div>
           </div>
 
-          <form action="/passport/login" method="post">
+          <form action="/login" method="post">
             <div className="form-group">
               <label htmlFor="userInput">Usuario</label>
               <input

@@ -65,7 +65,7 @@ function MongoUtils() {
   };
 
   mu.listenToChanges = (client, notifyAll) => {
-    const collectionRestaurant = client.db("web").collection("stores");
+    const collectionRestaurant = client.db("web").collection("restaurantes");
     //retorna una promesa
     const cursor = collectionRestaurant.watch();
 

@@ -29,7 +29,9 @@ const Client = () => {
     setLon(pos.coords.longitude);
   });
   const setWS = () => {
-    var socket = new WebSocket("ws://reservamos.herokuapp.com");
+    var socket = new WebSocket("ws://reservamos.herokuapp.com/");
+    //var socket = new WebSocket("ws://localhost:3001/");
+
     socket.onopen = () => {
       console.log("client connected!");
       socket.onmessage = (mensaje) => {
