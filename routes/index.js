@@ -18,7 +18,7 @@ const parseAddress = (address) => {
   return address;
 };
 
-const apikey = "AIzaSyAxuz7I_RIBLNfgYVdi1BsBw6b_TsBk0_s";
+const apikey = "";
 router.post("/addStore", function (req, res) {
   let body = req.body;
   let direccion =

@@ -23,24 +23,18 @@ body {
 }
 
 .btn-register {
-<<<<<<< HEAD
   opacity: 100;
   background-color: #329232;
 }
-=======
-    #background-color:;
-}
 
 .btn-entrar {
-    background-color: #FFA74E;
-
+  background-color: #ffa74e;
 }
 
 .navbar-light .navbar-nav .nav-link {
-    color: red;
+  color: red;
 }
 
-.prueba-nav{
-  color:white;
+.prueba-nav {
+  color: white;
 }
->>>>>>> e3f8fc32169b4db35aef5db4f790e6df22455127
