@@ -291,7 +291,7 @@ const Card = (props) => {
               <div className="col-md-4">
                 <div className="embed-responsive embed-responsive-16by9">
                   <img
-                    alt="Card image cap"
+                    alt="Imagen del establecimiento"
                     className="card-img-top embed-responsive-item"
                     src={props.item.image}
                   />

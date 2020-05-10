@@ -5,7 +5,8 @@ module.exports = {
     },
     "extends": [
         "eslint:recommended",
-        "plugin:react/recommended"
+        "plugin:react/recommended",
+        "plugin:jest/recommended"
     ],
     "globals": {
         "Atomics": "readonly",
@@ -15,10 +16,11 @@ module.exports = {
         "ecmaFeatures": {
             "jsx": true
         },
-        "ecmaVersion": 2018
+        "ecmaVersion": 8
     },
     "plugins": [
-        "react"
+        "react",
+        "jest"
     ],
     "rules": {
         "indent": [
