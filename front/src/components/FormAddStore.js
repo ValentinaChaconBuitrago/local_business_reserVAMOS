@@ -23,7 +23,6 @@ const FormAddStore = () => {
           </div>
         </div>
 
-
       </div>
 
 
@@ -83,6 +82,16 @@ const FormAddStore = () => {
                   type="text"
                   className="form-control"
                   name="foodType"
+                />
+              </div>
+              <div className="form-group">
+                <label htmlFor="sizeInput">Capacidad del establecimiento</label>
+                <input
+                  id="sizeInput"
+                  placeholder="30"
+                  type="text"
+                  className="form-control"
+                  name="nMax"
                 />
               </div>
               <div className="form-group">
