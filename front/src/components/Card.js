@@ -95,7 +95,7 @@ const Card = (props) => {
             <div>{props.item.foodType}</div>
             <form>
               <div className="form-group">
-                <label for="exampleFormControlInput1">Email address</label>
+                <label htmlFor="exampleFormControlInput1">Email address</label>
                 <input
                   type="email"
                   className="form-control"
@@ -104,7 +104,9 @@ const Card = (props) => {
                 ></input>
               </div>
               <div className="form-group">
-                <label for="exampleFormControlSelect1">Example select</label>
+                <label htmlFor="exampleFormControlSelect1">
+                  Example select
+                </label>
                 <select
                   onChange={() => {
                     alert("JEJE");
@@ -183,7 +185,7 @@ const Card = (props) => {
               <div className="col-md-4">
                 <div className="embed-responsive embed-responsive-16by9">
                   <img
-                    alt="Card image cap"
+                    alt="Imagen del establecimiento"
                     className="card-img-top embed-responsive-item"
                     src={props.item.image}
                   />
