@@ -9,6 +9,7 @@ import "../card.css";
 
 const customStyles = {
   content: {
+    height: "300px",
     top: "50%",
     left: "50%",
     right: "auto",
@@ -83,9 +84,11 @@ const Card = (props) => {
             style={customStyles}
             contentLabel="Example Modal"
           >
-            <h2 ref={(_subtitle) => (subtitle = _subtitle)}>Hello</h2>
+            <h2 ref={(_subtitle) => (subtitle = _subtitle)}>
+              {props.item.name}
+            </h2>
             <button onClick={closeModal}>close</button>
-            <div>I am a modal</div>
+            <div>{props.item.foodType}</div>
           </Modal>
         </div>
         <div key={props.item._id} style={{ maxWidth: "50ww%" }}>

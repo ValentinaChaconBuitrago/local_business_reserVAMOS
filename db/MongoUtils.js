@@ -76,7 +76,7 @@ function MongoUtils() {
   };
 
   mu.getRestaurants = (client) => {
-    const collectionRestaurant = client.db("web").collection("stores");
+    const collectionRestaurant = client.db("web").collection("restaurantes");
     //retorna una promesa
     return collectionRestaurant
       .find({})
