@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import FormSignup from "./FormSignup.js";
 import Profile from "./Profile.js";
-import FormAddStore from "./FormAddStore.js";
 import Nav from "../Nav.js";
 import NavUser from "../NavUser.js";
 
