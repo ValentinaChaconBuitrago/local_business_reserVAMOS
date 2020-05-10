@@ -5,11 +5,15 @@ import React, { useState } from "react";
 import PropTypes from "prop-types";
 import StarRatingComponent from "react-star-rating-component";
 import Modal from "react-modal";
+import DatePicker from "react-datepicker";
 import "../card.css";
 
 const customStyles = {
   content: {
-    top: "50%",
+    borderRadius: "35px",
+    width: "600px",
+    height: "500px",
+    top: "40%",
     left: "50%",
     right: "auto",
     bottom: "auto",
@@ -55,6 +59,7 @@ function onStarClick(nextValue, prevValue, name) {
 
 const Card = (props) => {
   const [isClicked, setIsClicked] = useState(false);
+  const [startDate, setStartDate] = useState(new Date());
 
   const [modalIsOpen, setIsOpen] = React.useState(false);
   var subtitle;
@@ -83,9 +88,43 @@ const Card = (props) => {
             style={customStyles}
             contentLabel="Example Modal"
           >
-            <h2 ref={(_subtitle) => (subtitle = _subtitle)}>Hello</h2>
+            <h2 ref={(_subtitle) => (subtitle = _subtitle)}>
+              {props.item.name}
+            </h2>
             <button onClick={closeModal}>close</button>
-            <div>I am a modal</div>
+            <div>{props.item.foodType}</div>
+            <form>
+              <div className="form-group">
+                <label for="exampleFormControlInput1">Email address</label>
+                <input
+                  type="email"
+                  className="form-control"
+                  id="exampleFormControlInput1"
+                  placeholder="name@example.com"
+                ></input>
+              </div>
+              <div className="form-group">
+                <label for="exampleFormControlSelect1">Example select</label>
+                <select
+                  onChange={() => {
+                    alert("JEJE");
+                  }}
+                  className="form-control"
+                  id="exampleFormControlSelect1"
+                >
+                  <option>-</option>
+                  <option>1</option>
+                  <option>2</option>
+                  <option>3</option>
+                  <option>4</option>
+                  <option>5</option>
+                </select>
+              </div>
+
+              <button type="submit" class="btn btn-default">
+                Submit
+              </button>
+            </form>
           </Modal>
         </div>
         <div key={props.item._id} style={{ maxWidth: "50ww%" }}>
@@ -125,18 +164,21 @@ const Card = (props) => {
             <div className="row">
               <div className="col-md-8">
                 <p className="card-text">{props.item.description}</p>
-
-                <a>
-                  <button
-                    type="button"
-                    className="botonCrearReserva"
-                    onClick={() => {
-                      openModal();
-                    }}
-                  >
-                    Hacer una reserva
-                  </button>
-                </a>
+                <div>
+                  <DatePicker
+                    selected={startDate}
+                    onChange={(date) => setStartDate(date)}
+                  ></DatePicker>
+                </div>
+                <button
+                  type="button"
+                  className="botonCrearReserva"
+                  onClick={() => {
+                    openModal();
+                  }}
+                >
+                  Hacer una reserva
+                </button>
               </div>
               <div className="col-md-4">
                 <div className="embed-responsive embed-responsive-16by9">

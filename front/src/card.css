@@ -5,6 +5,7 @@
   border-radius: 50px;
   text-transform: uppercase;
   letter-spacing: 0.03em;
+  background-color: white;
 }
 #headerCard {
   color: #ffffff;
@@ -12,4 +13,7 @@
 }
 #stars {
   height: 10px;
+}
+.modalReserva {
+  height: 300;
 }
