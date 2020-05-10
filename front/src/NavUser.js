@@ -3,10 +3,6 @@ import "./App.css";
 import { Link } from "react-router-dom";
 
 const NavUser = () => {
-  const navStyle = {
-    color: "white",
-  };
-
   return (
     <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
       <Link to="/" className="navbar-brand">

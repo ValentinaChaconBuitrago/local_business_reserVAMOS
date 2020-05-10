@@ -1,6 +1,4 @@
 const passport = require("passport");
-const bcrypt = require("bcrypt");
-const saltRounds = 10;
 const Strategy = require("passport-local").Strategy;
 var db = require("./db");
 const MongoUtils = require("./db/MongoUtils.js");
@@ -16,18 +14,17 @@ passport.use(
   "local-login",
   new Strategy(function (username, password, cb) {
     db.users.findByUsername(username, function (err, user) {
+      console.log("entro al login");
       if (err) {
         return cb(err);
       }
       if (!user) {
         return cb(null, false);
       }
-      bcrypt.compare(password, user.password, function (err, result) {
-        if (result==false) {
-          return cb(null, false);
-        }
-        return cb(null, user);
-      });
+      if (user.password != password) {
+        return cb(null, false);
+      }
+      return cb(null, user);
     });
   })
 );
@@ -91,18 +88,15 @@ passport.use(
               password
             );
 
-            bcrypt.genSalt(saltRounds, function (err, salt) {
-              bcrypt.hash(password, salt, function (err, hash) {
-                mu.insertDocument(username, hash, req.body.date, req.body.phone)
-                  .then(() => mu.getUser(username))
-                  .then((user) => {
-                    user.map((u) => {
-                      return cb(null, u);
-                    });
-                  })
-                  .catch((err) => console.log(err));
-              });
-            });
+
+            mu.insertDocument(username, password, req.body.date, req.body.phone)
+              .then(() => mu.getUser(username))
+              .then((user) => {
+                user.map(u=>{
+                  return cb(null, u);
+                });
+              })
+              .catch((err) => console.log(err));
           }
         });
       });
