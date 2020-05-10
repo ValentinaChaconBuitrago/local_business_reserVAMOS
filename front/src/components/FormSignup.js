@@ -3,8 +3,9 @@ import React from "react";
 const FormSignup = () => {
   return (
     <div className="container">
+    <h1></h1>
       <div className="row">
-        <div className="col-sm-4 col-sm-offset-3"></div>
+        <div className="col-sm-4 col-sm-offset-3"> </div>
 
         <div className="col-sm-4 col-sm-offset-3">
 
@@ -24,20 +25,20 @@ const FormSignup = () => {
 
           <form action="/signup" method="post">
             <div className="form-group">
-              <label>Usuario</label>
-              <input placeholder="JuanPerez30" type="text" className="form-control" name="username" />
+              <label htmlFor="userInput">Usuario</label>
+              <input id= "userInput" placeholder="JuanPerez30" type="text" className="form-control" name="username" />
             </div>
             <div className="form-group">
-              <label>Fecha de Nacimiento</label>
-              <input placeholder="30-05-1990" type="text" className="form-control" name="date" />
+              <label htmlFor="dateInput">Fecha de Nacimiento</label>
+              <input id="dateInput" placeholder="30-05-1990" type="text" className="form-control" name="date" />
             </div>
             <div className="form-group">
-              <label>Celular</label>
-              <input placeholder="3194294588" type="text" className="form-control" name="phone" />
+              <label htmlFor="phoneInput">Celular</label>
+              <input id="phoneInput" placeholder="3194294588" type="text" className="form-control" name="phone" />
             </div>
             <div className="form-group">
-              <label>Contraseña</label>
-              <input placeholder="contraseña" type="password" className="form-control" name="password" />
+              <label htmlFor="passInput">Contraseña</label>
+              <input id="passInput" placeholder="contraseña" type="password" className="form-control" name="password" />
             </div>
             <button type="submit" className="btn btn-entrar btn-lg">
               Registrarse

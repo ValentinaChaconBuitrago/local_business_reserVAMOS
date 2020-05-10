@@ -25,10 +25,18 @@ body{
 
 
 .btn-register {
-    background-color: #2eca6a;
+    #background-color:;
 }
 
 .btn-entrar {
     background-color: #FFA74E;
 
+}
+
+.navbar-light .navbar-nav .nav-link {
+    color: red;
+}
+
+.prueba-nav{
+  color:white;
 }

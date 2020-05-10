@@ -4,7 +4,7 @@ import PropTypes from "prop-types";
 const Profile = (props) => {
   return (
     <div className="container">
-
+    <h1></h1>
     <div className="row">
       <div className="col-md-4"></div>
 
@@ -15,6 +15,7 @@ const Profile = (props) => {
                 <span className="fa fa-user"></span>
               </div>
               <div className="card-title-c align-self-center">
+
                 <h2 className="title-c">Perfil</h2>
               </div>
             </div>

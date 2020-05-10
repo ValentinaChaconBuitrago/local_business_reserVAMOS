@@ -3,6 +3,7 @@ import React from "react";
 const FormLogin = () => {
   return (
     <div className="container">
+      <h1></h1>
       <div className="row">
         <div className="col-sm-4 col-sm-offset-3"></div>
 
@@ -26,12 +27,12 @@ const FormLogin = () => {
 
           <form action="/login" method="post">
             <div className="form-group">
-              <label>Usuario</label>
-              <input placeholder="JuanPerez30" type="text" className="form-control" name="username" />
+              <label htmlFor="userInput">Usuario</label>
+              <input id="userInput" placeholder="JuanPerez30" type="text" className="form-control" name="username" />
             </div>
             <div className="form-group">
-              <label>Contraseña</label>
-              <input placeholder="contraseña" type="password" className="form-control" name="password" />
+              <label htmlFor="passInput">Contraseña</label>
+              <input id="passInput" placeholder="contraseña" type="password" className="form-control" name="password" />
             </div>
 
             <button type="submit" className="btn btn-entrar btn-lg">
