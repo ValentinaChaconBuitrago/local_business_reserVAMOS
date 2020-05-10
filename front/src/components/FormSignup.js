@@ -25,19 +25,19 @@ const FormSignup = () => {
           <form action="/signup" method="post">
             <div className="form-group">
               <label>Usuario</label>
-              <input type="text" className="form-control" name="username" />
+              <input placeholder="JuanPerez30" type="text" className="form-control" name="username" />
             </div>
             <div className="form-group">
               <label>Fecha de Nacimiento</label>
-              <input type="text" className="form-control" name="date" />
+              <input placeholder="30-05-1990" type="text" className="form-control" name="date" />
             </div>
             <div className="form-group">
               <label>Celular</label>
-              <input type="text" className="form-control" name="phone" />
+              <input placeholder="3194294588" type="text" className="form-control" name="phone" />
             </div>
             <div className="form-group">
               <label>Contraseña</label>
-              <input type="password" className="form-control" name="password" />
+              <input placeholder="contraseña" type="password" className="form-control" name="password" />
             </div>
             <button type="submit" className="btn btn-entrar btn-lg">
               Registrarse

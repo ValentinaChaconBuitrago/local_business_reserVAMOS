@@ -6,9 +6,29 @@ const FormAddStore = () => {
     <div>
       <NavUser></NavUser>
       <div className="container">
-        <h1>
-          <span className="fa fa-shopping-cart"></span> Agregar un Establecimiento
-        </h1>
+      <div className="row">
+      <div className="col-sm-4 col-sm-offset-3"></div>
+
+        <div className="col-md-4">
+          <div className="card-box-c foo">
+            <div className="card-header-c d-flex">
+              <div className="card-box-iconno">
+                <span className="fa fa-shopping-cart"></span>
+              </div>
+              <div className="card-title-c align-self-center">
+                <h2 className="title-c">Agregar un Establecimiento</h2>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+      </div>
+
+
+
+
+
         <div className="row">
           <div className="col-sm-4 col-sm-offset-3"></div>
 
@@ -61,7 +81,7 @@ const FormAddStore = () => {
                 ></textarea>
               </div>
               <button type="submit" className="btn btn-info btn-lg">
-                Agregar negocio
+                Agregar
               </button>
               <hr />
             </form>

@@ -24,21 +24,18 @@ const FormLogin = () => {
 
 
 
-
-
-
           <form action="/login" method="post">
             <div className="form-group">
               <label>Usuario</label>
-              <input type="text" className="form-control" name="username" />
+              <input placeholder="JuanPerez30" type="text" className="form-control" name="username" />
             </div>
             <div className="form-group">
               <label>Contraseña</label>
-              <input type="password" className="form-control" name="password" />
+              <input placeholder="contraseña" type="password" className="form-control" name="password" />
             </div>
 
             <button type="submit" className="btn btn-entrar btn-lg">
-              Entrar
+              Ingresar
             </button>
           </form>
           <hr />
