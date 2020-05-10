@@ -3,26 +3,40 @@ import React from "react";
 const FormLogin = () => {
   return (
     <div className="container">
+      <h1></h1>
       <div className="row">
         <div className="col-sm-4 col-sm-offset-3"></div>
 
         <div className="col-sm-4 col-sm-offset-3">
-          <h1>
-            <span className="fa fa-sign-in"></span> Ingresar
-          </h1>
+
+
+          <div className="col-md-4">
+            <div className="card-box-c foo">
+              <div className="card-header-c d-flex">
+                <div className="card-box-iconn">
+                  <span className="fa fa-sign-in"></span>
+                </div>
+                <div className="card-title-c align-self-center">
+                  <h2 className="title-c">Ingreso</h2>
+                </div>
+              </div>
+            </div>
+          </div>
+
+
 
           <form action="/login" method="post">
             <div className="form-group">
-              <label>Usuario</label>
-              <input type="text" className="form-control" name="username" />
+              <label htmlFor="userInput">Usuario</label>
+              <input id="userInput" placeholder="JuanPerez30" type="text" className="form-control" name="username" />
             </div>
             <div className="form-group">
-              <label>Contraseña</label>
-              <input type="password" className="form-control" name="password" />
+              <label htmlFor="passInput">Contraseña</label>
+              <input id="passInput" placeholder="contraseña" type="password" className="form-control" name="password" />
             </div>
 
-            <button type="submit" className="btn btn-warning btn-lg">
-              Entrar
+            <button type="submit" className="btn btn-entrar btn-lg">
+              Ingresar
             </button>
           </form>
           <hr />

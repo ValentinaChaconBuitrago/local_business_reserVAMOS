@@ -112,7 +112,7 @@ const Home = () =>{
               </p>
             </div>
             <div className="card-footer-c">
-              <a href="#" className="link-c link-icon">Conoce más
+              <a href="/" className="link-c link-icon">Conoce más
                 <span className="ion-ios-arrow-forward"></span>
               </a>
             </div>

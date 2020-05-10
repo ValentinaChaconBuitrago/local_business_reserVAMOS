@@ -27,11 +27,11 @@ const NavUser = () => {
       <div className="collapse navbar-collapse">
         <ul className="navbar-nav">
           <Link to="/" className="nav-link">
-            <li className="nav-item active">Inicio</li>
+            <li li className="prueba-nav">Inicio</li>
             <span className="sr-only">(current)</span>
           </Link>
           <Link to="/client" className="nav-link">
-            <li className="nav-item active">Reservar</li>
+            <li li className="prueba-nav">Reservar</li>
             <span className="sr-only">(current)</span>
           </Link>
         </ul>
@@ -40,11 +40,11 @@ const NavUser = () => {
       <div id="navbarNav">
         <ul className="navbar-nav navbar-right">
           <Link to="/login" className="nav-link btn-register navbar-btn">
-            <li>Perfil</li>
+            <li className="prueba-nav" >Perfil</li>
             <span className="sr-only">(current)</span>
           </Link>
           <Link to="/formAddStore" className="nav-link">
-            <li>Nuevo Establecimiento</li>
+            <li className="prueba-nav">Nuevo Establecimiento</li>
             <span className="sr-only">(current)</span>
           </Link>
         </ul>

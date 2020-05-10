@@ -49,12 +49,12 @@ function MongoUtils() {
     );
   };
 
-  mu.insertDocument = (pUsername, pPassword) => {
+  mu.insertDocument = (pUsername, pPassword, pDate, pPhone) => {
     return mu.connect().then((client) =>
       client
         .db("authentication")
         .collection("users")
-        .insertOne({ username: pUsername, password: pPassword })
+        .insertOne({ username: pUsername, password: pPassword, date: pDate, phone: pPhone })
         .finally(() => client.close())
     );
   };

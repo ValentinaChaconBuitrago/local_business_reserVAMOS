@@ -6,17 +6,39 @@ const FormAddStore = () => {
     <div>
       <NavUser></NavUser>
       <div className="container">
-        <h1>
-          <span className="fa fa-shopping-cart"></span> Agregar un Establecimiento
-        </h1>
+      <h1></h1>
+      <div className="row">
+      <div className="col-sm-4 col-sm-offset-3"></div>
+
+        <div className="col-md-4">
+          <div className="card-box-c foo">
+            <div className="card-header-c d-flex">
+              <div className="card-box-iconno">
+                <span className="fa fa-shopping-cart"></span>
+              </div>
+              <div className="card-title-c align-self-center">
+                <h2 className="title-c">Agregar un Establecimiento</h2>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+      </div>
+
+
+
+
+
         <div className="row">
           <div className="col-sm-4 col-sm-offset-3"></div>
 
           <div className="col-sm-4 col-sm-offset-3">
             <form action="/addStore" method="post">
               <div className="form-group">
-                <label>Nombre</label>
+                <label htmlFor="nameInput">Nombre</label>
                 <input
+                  id="nameInput"
                   placeholder="Tienda de Don Luis"
                   type="text"
                   className="form-control"
@@ -24,8 +46,9 @@ const FormAddStore = () => {
                 />
               </div>
               <div className="form-group">
-                <label>Dirección</label>
+                <label htmlFor="addInput">Dirección</label>
                 <input
+                  id="addInput"
                   placeholder="calle 78# 7-98"
                   type="text"
                   className="form-control"
@@ -33,8 +56,9 @@ const FormAddStore = () => {
                 />
               </div>
               <div className="form-group">
-                <label>Teléfono</label>
+                <label htmlFor="phoneInput">Teléfono</label>
                 <input
+                  id="phoneInput"
                   placeholder="3193970054"
                   type="text"
                   className="form-control"
@@ -42,8 +66,9 @@ const FormAddStore = () => {
                 />
               </div>
               <div className="form-group">
-                <label>URL de la imagen</label>
+                <label htmlFor="imageInput">URL de la imagen</label>
                 <input
+                  id="imageInput"
                   placeholder="https://blog.rappi.com/masa.jpg"
                   type="text"
                   className="form-control"
@@ -51,8 +76,19 @@ const FormAddStore = () => {
                 />
               </div>
               <div className="form-group">
-                <label>Descripción</label>
+                <label htmlFor="typeInput">Tipo de comida/establecimiento</label>
+                <input
+                  id="typeInput"
+                  placeholder="Comida Asiatica, sushi"
+                  type="text"
+                  className="form-control"
+                  name="foodType"
+                />
+              </div>
+              <div className="form-group">
+                <label htmlFor="descInput">Descripción</label>
                 <textarea
+                  id="descInput"
                   placeholder="Minimercado de frutas y verduras"
                   className="form-control"
                   name="description"
@@ -61,7 +97,7 @@ const FormAddStore = () => {
                 ></textarea>
               </div>
               <button type="submit" className="btn btn-info btn-lg">
-                Agregar negocio
+                Agregar
               </button>
               <hr />
             </form>
