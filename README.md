@@ -1,6 +1,6 @@
-# Microshopping
+# ReserVAMOS
 
-Microshopping is a web application meant to support local business. Users get a list of local businesses close to their current location. In more detail, users have access to the location on the map of the store and its details. Users can create an account and register their own business.
+ReserVAMOS is a web application meant to support local business. Users get a list of local businesses close to their current location and create reservations. In more detail, clients have access to the location on the map of the store and its details and are allowed to create reservations. Business owners can create an account and register their own business.
 ![](files/mainPage.png)
 
 ## Authors
@@ -11,13 +11,14 @@ Microshopping is a web application meant to support local business. Users get a 
 
 ## Objectives
 
-- Develop a dynamic web page that shows and updates a list of businesses, allowing users to obtain information of businesses close to their current location.
+- Develop a dynamic web page that shows and updates a list of businesses, allowing users to obtain reserve a spot in a businesses close to their current location.
 - Allow business owners to register their store and show it to people in the area.
+- Allow clients to create reservations for their selected restaurant.
 - Create a tool that persists user's information that uses authentication.
 
 ## Technologies used
 
-- HTML, CSS, Bootstrap, Javascript, Node.js, Express.js, MongoDB, Mongo Atlas, React, Google Maps.
+- HTML, CSS, Bootstrap, Javascript, Node.js, Express.js, MongoDB, Mongo Atlas, React, Google Maps, WebSockets, Jest.
 
 ## Application deployment
 
@@ -75,7 +76,7 @@ After this, the application will be available at http://localhost:3000/
 
 ## Deployed Application
 
-[Microshopping](https://appmicroshopping.herokuapp.com/)
+[Microshopping](https://reservamos.herokuapp.com/)
 
 ## License
 
