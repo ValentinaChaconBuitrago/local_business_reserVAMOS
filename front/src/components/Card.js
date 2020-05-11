@@ -6,7 +6,7 @@ import PropTypes from "prop-types";
 import StarRatingComponent from "react-star-rating-component";
 import Modal from "react-modal";
 import DatePicker from "react-datepicker";
-
+import dateFormat from "dateformat";
 import "react-datepicker/dist/react-datepicker.css";
 
 import "../card.css";
@@ -17,8 +17,8 @@ const customStyles = {
     borderColor: "#000000",
     borderRadius: "35px",
     width: "600px",
-    height: "500px",
-    top: "40%",
+    height: "700px",
+    top: "50%",
     left: "50%",
     right: "auto",
     bottom: "auto",
@@ -64,7 +64,9 @@ function onStarClick(nextValue, prevValue, name) {
 
 const Card = (props) => {
   const [isClicked, setIsClicked] = useState(false);
-  const [startDate, setStartDate] = useState(new Date());
+
+  var now = new Date();
+  const [startDate, setStartDate] = useState(now);
   const [showDatePicker, setShowDatePicker] = useState(false);
   const [showHoras, setShowHoras] = useState(false);
   const [showUserInfo, setShowUserInfo] = useState(false);
@@ -89,12 +91,20 @@ const Card = (props) => {
     setIsOpen(false);
   }
   function dateSelected(date) {
+    const options1 = { year: "numeric", month: "numeric", day: "numeric" };
+
     setStartDate(date);
+    const dateTimeFormat2 = new Intl.DateTimeFormat("en-GB", options1);
+    let r = dateTimeFormat2.format(date);
+    let f = r.split("/");
+    let d = "" + f[0] + "-" + f[1] + "-" + f[2];
+    console.log(d);
+
     fetch(
       "./available/" +
         props.item._id +
         "/" +
-        startDate +
+        d +
         "/" +
         personas +
         "/" +
@@ -135,7 +145,7 @@ const Card = (props) => {
                 </label>
                 <select
                   onChange={(value) => {
-                    setPrsonas(value.target.value);
+                    setPrsonas(parseInt(value.target.value));
                     setShowDatePicker(true);
                   }}
                   className="form-control"
@@ -150,16 +160,16 @@ const Card = (props) => {
                   >
                     -
                   </option>
-                  <option>1</option>
-                  <option>2</option>
-                  <option>3</option>
-                  <option>4</option>
-                  <option>5</option>
-                  <option>6</option>
-                  <option>7</option>
-                  <option>8</option>
-                  <option>9</option>
-                  <option>10</option>
+                  <option value={1}>1</option>
+                  <option value={2}>2</option>
+                  <option value={3}>3</option>
+                  <option value={4}>4</option>
+                  <option value={5}>5</option>
+                  <option value={6}>6</option>
+                  <option value={7}>7</option>
+                  <option value={8}>8</option>
+                  <option value={9}>9</option>
+                  <option value={10}>10</option>
                 </select>
               </div>
               {showDatePicker ? (
@@ -167,7 +177,7 @@ const Card = (props) => {
                   <label>¿Cuando?</label>
 
                   <DatePicker
-                    dateFormat="yyyy-MM-dd"
+                    dateFormat="dd-MM-yyyy"
                     selected={startDate}
                     onChange={(date) => {
                       dateSelected(date);

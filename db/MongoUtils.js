@@ -101,6 +101,7 @@ function MongoUtils() {
   mu.getReserva = (client, idRestaurante, fecha) => {
     const collectionRestaurant = client.db("web").collection("reservas");
     //retorna una promesa
+    console.log("FECHA", fecha);
     let obj = { idRes: idRestaurante, fecha: fecha };
     console.log(obj);
     return collectionRestaurant

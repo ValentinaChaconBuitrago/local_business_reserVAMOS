@@ -87,8 +87,8 @@ router.get("/reservations/:idRest/:fecha", (req, res) => {
 router.get("/available/:idRest/:fecha/:nPersonas/:nMax", (req, res) => {
   const id = req.params.idRest;
   const fecha = req.params.fecha;
-  const nPersonas = req.params.nPersonas;
-  const nMax = req.params.nMax;
+  const nPersonas = parseInt(req.params.nPersonas);
+  const nMax = parseInt(req.params.nMax);
 
   let horas = [
     "12:00",
@@ -115,6 +115,7 @@ router.get("/available/:idRest/:fecha/:nPersonas/:nMax", (req, res) => {
     .then((client) => mu.getReserva(client, id, fecha))
     .then((user) => {
       reservas = user;
+      console.log("Reservas", reservas);
       reservas.forEach((btn) => {
         counts[btn.hora] = counts[btn.hora]
           ? counts[btn.hora]
@@ -122,6 +123,7 @@ router.get("/available/:idRest/:fecha/:nPersonas/:nMax", (req, res) => {
       });
       let respu = [];
       horas.forEach((hora) => {
+        console.log("hora" + hora + " " + counts[hora]);
         if (counts[hora] + nPersonas <= nMax) {
           respu.push(hora);
         }
@@ -135,6 +137,8 @@ router.get("/available/:idRest/:fecha/:nPersonas/:nMax", (req, res) => {
 
 router.post("/reservation/:idRes", function (req, res) {
   let body = req.body;
+  let nP = parseInt(body.nPersonas);
+  body.nPersonas = nP;
   body.idRes = req.params.idRes;
   //Client side rendering
   mu.connect()
