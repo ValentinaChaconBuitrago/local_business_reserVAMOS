@@ -6,7 +6,7 @@ function MongoUtils() {
 
   mu.connect = () => {
     const uri =
-      "mongodb+srv://val:val@cluster0-wnneh.azure.mongodb.net/test?retryWrites=true&w=majority";
+      process.env.MONGO_URL;
     const client = new MongoClient(
       uri,
       { useNewUrlParser: true },
@@ -70,7 +70,6 @@ function MongoUtils() {
     const cursor = collectionRestaurant.watch();
 
     cursor.on("change", (data) => {
-      console.log("Mongo change", data);
       notifyAll("Shit changed");
     });
   };
@@ -82,7 +81,6 @@ function MongoUtils() {
       .find({})
       .toArray()
       .finally(() => {
-        console.log("closing client");
         client.close();
       });
   };
@@ -94,21 +92,17 @@ function MongoUtils() {
       .find({ _id: ObjectId(id) })
       .toArray()
       .finally(() => {
-        console.log("closing client");
         client.close();
       });
   };
   mu.getReserva = (client, idRestaurante, fecha) => {
     const collectionRestaurant = client.db("web").collection("reservas");
     //retorna una promesa
-    console.log("FECHA", fecha);
     let obj = { idRes: idRestaurante, fecha: fecha };
-    console.log(obj);
     return collectionRestaurant
       .find(obj)
       .toArray()
       .finally(() => {
-        console.log("closing client");
         client.close();
       });
   };
@@ -116,25 +110,20 @@ function MongoUtils() {
     const collectionRestaurant = client.db("web").collection("reservas");
     //retorna una promesa
     return collectionRestaurant.insertOne(body).finally(() => {
-      console.log("closing client CREAR");
       client.close();
     });
   };
   mu.updateShop = (client, body, id, callback) => {
     const col = client.db("web").collection("stores");
-    console.log(body);
-    console.log(id);
     let resp = col.updateOne(
       { _id: ObjectId(id) },
       { $set: body },
       // eslint-disable-next-line no-unused-vars
       function (err, res) {
         if (err) throw err;
-        console.log("1 document updated");
         client.close();
       }
     );
-    console.log(resp);
     callback("OK");
   };
   return mu;

@@ -68,7 +68,6 @@ passport.use(
     },
     function (req, username, password, cb) {
       var date = req.body.date;
-      console.log(date);
       // asynchronous
       // User.findOne wont fire unless data is sent back
       process.nextTick(function () {

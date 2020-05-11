@@ -10,7 +10,6 @@ mu.connect()
   });
 
 const refreshUsers = () => {
-  console.log("refreshing users");
   mu.connect()
     .then(mu.getDocuments)
     .then((users) => {
@@ -20,7 +19,6 @@ const refreshUsers = () => {
 
 exports.findByUsername = function (username, cb) {
   refreshUsers();
-  console.log("finding user by name: ", username);
   process.nextTick(function () {
     for (var i = 0, len = records.length; i < len; i++) {
       var record = records[i];
@@ -33,8 +31,7 @@ exports.findByUsername = function (username, cb) {
 };
 
 exports.addUser = function (pUsername, pPassword) {
-  process.nextTick(function () {
-    console.log("adding a user", pUsername);
+  process.nextTick(function () {;
     mu.connect().then((client) =>
       mu.insertDocument(client, pUsername, pPassword)
     );

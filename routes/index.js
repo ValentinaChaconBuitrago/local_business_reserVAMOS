@@ -8,18 +8,10 @@ const mu = MongoUtils();
 /* GET home page. */
 
 const parseAddress = (address) => {
-  /*
-  let parts = address.split("#");
-  let nums = parts[1].replace(/ /g, "");
-  let finalNum = nums.split("-");
-  let newAddress = parts[0] + " " + finalNum[0] + finalNum[1];
-  console.log("new address", newAddress);
-  */
-  console.log("new address", address);
   return address;
 };
 
-const apikey = "AIzaSyDKUxGQ7i8hmgDjcStvDi2sgoC_BJUmXK4";
+const apikey = "";
 router.post("/addStore", function (req, res) {
   let body = req.body;
   let direccion =
@@ -115,7 +107,6 @@ router.get("/available/:idRest/:fecha/:nPersonas/:nMax", (req, res) => {
     .then((client) => mu.getReserva(client, id, fecha))
     .then((user) => {
       reservas = user;
-      console.log("Reservas", reservas);
       reservas.forEach((btn) => {
         counts[btn.hora] = counts[btn.hora]
           ? counts[btn.hora]
@@ -123,12 +114,10 @@ router.get("/available/:idRest/:fecha/:nPersonas/:nMax", (req, res) => {
       });
       let respu = [];
       horas.forEach((hora) => {
-        console.log("hora" + hora + " " + counts[hora]);
         if (counts[hora] + nPersonas <= nMax) {
           respu.push(hora);
         }
       });
-      console.log(respu);
       res.json(respu);
     })
 
@@ -220,10 +209,8 @@ function agregarRestaurante(res) {
       .then((bool) => {
         if (bool) {
           mu.insertBusiness(body);
-
-          console.log("Ok");
         } else {
-          console.log("F");
+          console.log("error");
         }
       })
       .then((doc) => {})
@@ -270,7 +257,6 @@ async function generarRes(res) {
       console.log(con++);
     }
   }
-  console.log("TERMINAMOS");
 }
 async function disponibles(id, fecha, nPersonas, nMax) {
   let horas = [
