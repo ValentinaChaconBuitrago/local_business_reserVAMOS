@@ -76,7 +76,7 @@ After this, the application will be available at http://localhost:3000/
 
 ## Deployed Application
 
-[Microshopping](https://reservamos.herokuapp.com/)
+[reserVAMOS](https://reservamos.herokuapp.com/)
 
 ## License
 
