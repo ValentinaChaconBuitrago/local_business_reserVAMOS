@@ -115,7 +115,7 @@ function MongoUtils() {
     const collectionRestaurant = client.db("web").collection("reservas");
     //retorna una promesa
     return collectionRestaurant.insertOne(body).finally(() => {
-      console.log("closing client");
+      console.log("closing client CREAR");
       client.close();
     });
   };
