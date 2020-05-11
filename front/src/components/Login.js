@@ -12,7 +12,7 @@ const Login = () => {
   };
 
   useEffect(() => {
-    fetch("/getUser")
+    fetch("/passport/getUser")
       .then((res) => res.json())
       .then((user) => setUser(user));
   }, []);
