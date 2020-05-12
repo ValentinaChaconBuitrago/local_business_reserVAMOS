@@ -246,6 +246,7 @@ async function generarRes(res) {
   let con = 0;
   const waitFor = (ms) => new Promise((r) => setTimeout(r, ms));
 
+  await waitFor(200);
   for (let index = 0; index < 250; index++) {
     for (let j = 0; j < lista.length; j++) {
       let element = lista[j];
