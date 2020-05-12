@@ -4,7 +4,7 @@ Componente que renderiza la lista de las tiendas
 import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
 import Card from "./Card.js";
-
+// Es interesante la forma en que calculan las distancias
 //Funcion que calcula la distancia entre dos coordenadas
 function calc(lat1, lat2, lon1, lon2) {
   var R = 6371e3; // metres
