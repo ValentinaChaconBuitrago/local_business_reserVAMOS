@@ -302,7 +302,7 @@ async function disponibles(id, fecha, nPersonas, nMax) {
 }
 async function crearReserva(id, fecha, nPersonas, respu) {
   let n = Math.floor(Math.random() * respu.length);
-
+  //Cambiar a pepito, quizá por algo tipo name o username
   let body = {
     idRes: id,
     fecha: fecha,
