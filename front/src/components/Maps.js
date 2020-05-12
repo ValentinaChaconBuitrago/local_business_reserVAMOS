@@ -14,7 +14,7 @@ let lonActual = 0;
 
 const Maps = withGoogleMap((props) => {
   const [selected, setSelected] = useState(null);
-  const apikey = "AIzaSyAxuz7I_RIBLNfgYVdi1BsBw6b_TsBk0_s";
+  const apikey = "";
 
   return (
     <GoogleMap key={apikey} defaultZoom={14} defaultCenter={props.mar}>

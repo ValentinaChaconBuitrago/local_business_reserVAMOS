@@ -8,7 +8,7 @@ const Signup = () => {
   const [user, setUser] = useState(null);
 
   const onLogout = () => {
-    fetch("/logout").then(() => setUser(null));
+    fetch("/passport/logout").then(() => setUser(null));
   };
 
   useEffect(() => {
@@ -37,7 +37,7 @@ const Signup = () => {
               ></Profile>
             </div>
             <div className="col-sm-3 col-sm-offset-3">
-              <button onClick={onLogout} className="btn btn-primary">
+              <button onClick={onLogout} className="btn btn-info btn-lg">
                 Cerrar sesión
               </button>
             </div>

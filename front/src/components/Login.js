@@ -8,7 +8,7 @@ const Login = () => {
   const [user, setUser] = useState(null);
 
   const onLogout = () => {
-    fetch("/logout").then(() => setUser(null));
+    fetch("/passport/logout").then(() => setUser(null));
   };
 
   useEffect(() => {
