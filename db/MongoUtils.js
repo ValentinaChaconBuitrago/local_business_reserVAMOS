@@ -70,7 +70,8 @@ function MongoUtils() {
     const cursor = collectionRestaurant.watch();
 
     cursor.on("change", (data) => {
-      notifyAll("Shit changed");
+      notifyAll("Sheet changed");
+      // supongo que lo que qeruian escribir era notifyAll("Seet changed"); en lugar de notifyAll("Shit changed");
     });
   };
 
