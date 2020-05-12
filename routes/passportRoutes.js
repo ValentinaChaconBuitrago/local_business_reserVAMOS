@@ -2,6 +2,9 @@ const express = require("express");
 const passport = require("passport");
 const router = express.Router();
 
+// Comentario Juan Felipe Torres: sería buena práctica enviar códigos de estado para manejar errores o para confirmar
+// que la ruta está funcionando. Basta con agregar upor ejemplo: res.status(200).json({succes: true, message: "User registered"})
+
 // Define routes.
 
 router.post(
