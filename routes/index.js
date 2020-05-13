@@ -19,8 +19,7 @@ router.post("/addStore", function (req, res) {
     body.address +
     "&key=" +
     apikey;
- 
-  await waitFor(200);
+
   body.rating = 5;
   body.nRatings = 1;
   body.comments = [];
