@@ -34,11 +34,7 @@ const Client = () => {
     var socket = new WebSocket(window.location.origin.replace(/^http/, "ws"));
     let dir = window.location.origin.replace(/^http/, "ws");
     socket.onopen = () => {
-      console.log("client connected!");
-      console.log("ON: ", dir);
       socket.onmessage = (mensaje) => {
-        console.log("mensaje!!!", mensaje);
-
         fetch("./getRestaurants")
           .then((res) => res.json())
           .then(
