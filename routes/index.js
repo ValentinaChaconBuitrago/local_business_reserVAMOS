@@ -22,6 +22,7 @@ router.post("/addStore", function (req, res) {
     body.address +
     "&key=" +
     apikey;
+
   body.rating = 5;
   body.nRatings = 1;
   body.comments = [];
@@ -53,7 +54,7 @@ router.post("/addStore", function (req, res) {
         }
       })
       .then((doc) => {
-        res.send("ok");
+        res.redirect("/client");
       })
       .catch((err) => console.log(err));
   };
@@ -216,6 +217,7 @@ router.put("/store/:id", function (req, res) {
 });
 
 //--------------------------POBLAR----------------------------------------//
+
 function agregarRestaurante(res) {
   let body = res;
   let direccion =

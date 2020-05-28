@@ -7,7 +7,7 @@ import Nav from "../Nav.js";
 import Maps from "./Maps.js";
 import "../Client.css";
 
-const apikey = "AIzaSyBwSItOpBz6bgiF8x3L1BMsHUPCBj9srAg";
+const apikey = "";
 
 const googlemapsurl =
   "https://maps.googleapis.com/maps/api/js?key=" +
@@ -29,14 +29,12 @@ const Client = () => {
     setLon(pos.coords.longitude);
   });
   const setWS = () => {
-    var socket = new WebSocket("wss://reservamos.herokuapp.com");
+    //var socket = new WebSocket("wss://reservamos.herokuapp.com");
     //var socket = new WebSocket("ws://localhost:3001/");
-
+    var socket = new WebSocket(window.location.origin.replace(/^http/, "ws"));
+    let dir = window.location.origin.replace(/^http/, "ws");
     socket.onopen = () => {
-      console.log("client connected!");
       socket.onmessage = (mensaje) => {
-        console.log("mensaje!!!", mensaje);
-
         fetch("./getRestaurants")
           .then((res) => res.json())
           .then(

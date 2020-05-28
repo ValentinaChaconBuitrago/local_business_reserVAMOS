@@ -5,7 +5,9 @@ function MongoUtils() {
   const mu = {};
 
   mu.connect = () => {
+
     const uri = process.env.MONGO_URL;
+
     const client = new MongoClient(
       uri,
       { useNewUrlParser: true },
