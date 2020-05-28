@@ -25,11 +25,7 @@ const FormAddStore = () => {
 
       </div>
 
-
-
-
-
-        <div className="row">
+      <div className="row">
           <div className="col-sm-4 col-sm-offset-3"></div>
 
           <div className="col-sm-4 col-sm-offset-3">
@@ -48,7 +44,7 @@ const FormAddStore = () => {
                 <label htmlFor="addInput">Dirección</label>
                 <input
                   id="addInput"
-                  placeholder="calle 78# 7-98"
+                  placeholder="calle 127d 1983"
                   type="text"
                   className="form-control"
                   name="address"

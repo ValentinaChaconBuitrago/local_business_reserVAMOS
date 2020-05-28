@@ -6,6 +6,7 @@ import Home from "./components/Home.js";
 import Client from "./components/Client.js";
 import Login from "./components/Login.js";
 import Signup from "./components/Signup.js";
+import ListStores from "./components/ListStores.js";
 import FormAddStore from "./components/FormAddStore.js";
 
 const App = () => {
@@ -18,6 +19,7 @@ const App = () => {
           <Route path="/login" component={Login} />
           <Route path="/signup" component={Signup} />
           <Route path="/formAddStore" component={FormAddStore} />
+          <Route path="/confirmation" component={ListStores} />
         </Switch>
       </div>
     </Router>

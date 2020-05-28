@@ -7,7 +7,7 @@ import Nav from "../Nav.js";
 import Maps from "./Maps.js";
 import "../Client.css";
 
-const apikey = "";
+const apikey = "AIzaSyBwSItOpBz6bgiF8x3L1BMsHUPCBj9srAg";
 
 const googlemapsurl =
   "https://maps.googleapis.com/maps/api/js?key=" +

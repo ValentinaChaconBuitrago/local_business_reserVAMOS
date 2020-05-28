@@ -37,7 +37,7 @@ const FormSignup = () => {
               <input
                 id="dateInput"
                 placeholder="30-05-1990"
-                type="text"
+                type="date"
                 className="form-control"
                 name="date"
               />

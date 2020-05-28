@@ -112,7 +112,7 @@ const Home = () =>{
               </p>
             </div>
             <div className="card-footer-c">
-              <a href="/" className="link-c link-icon">Conoce más
+              <a href="https://digitalpolicylaw.com/uber-eats-ofrece-opcion-para-donaciones-a-restaurantes/" className="link-c link-icon">Conoce más
                 <span className="ion-ios-arrow-forward"></span>
               </a>
             </div>

@@ -13,6 +13,9 @@ const parseAddress = (address) => {
 
 const apikey = "";
 router.post("/addStore", function (req, res) {
+  let user = req.user;
+  let ownerID = user._id;
+  console.log("owner id when adding store: ", ownerID);
   let body = req.body;
   let direccion =
     "https://maps.googleapis.com/maps/api/geocode/json?address=" +
@@ -22,17 +25,23 @@ router.post("/addStore", function (req, res) {
   body.rating = 5;
   body.nRatings = 1;
   body.comments = [];
+  body.owner = ownerID;
   const processData = () => {
     fetch(direccion, {
-      method: "POST", // or 'PUT'
+      method: "POST", // or 'PUT's
       body: {}, // data can be `string` or {object}!
     })
-      .then((res) => res.json())
+      .then((res) => {
+        console.log("resultado del fetch",res);
+        return res.json();
+      })
       .then((address) => {
         if (address.results.length > 0) {
+          console.log("Esta es la direccion----------------", address);
           body.position = address.results[0].geometry.location;
           return true;
         } else {
+          console.log("Esta es la direccion----------------", address);
           return false;
         }
       })
@@ -40,7 +49,7 @@ router.post("/addStore", function (req, res) {
         if (bool) {
           mu.insertBusiness(body);
         } else {
-          res.send("No se encontró la direccion");
+          res.send("No se encontró la direccion del usuario");
         }
       })
       .then((doc) => {
@@ -48,6 +57,7 @@ router.post("/addStore", function (req, res) {
       })
       .catch((err) => console.log(err));
   };
+
   processData();
 });
 
@@ -60,6 +70,20 @@ router.get("/getRestaurants", function (req, res) {
     .then((restaurants) => res.json(restaurants))
     .catch((err) => console.log(err));
 });
+
+// Data endpoint: retorna un archivo json
+router.get("/getUserRestaurants", function (req, res) {
+  let user = req.user;
+  let ownerID = JSON.stringify(user._id);
+  console.log("tipo del usuario id", typeof ownerID, ownerID);
+  //Client side rendering
+  mu.getUserRestaurants(ownerID)
+    //for Front side rendering send the html instead of the json file
+    .then((restaurants) => res.json(restaurants))
+    .catch((err) => console.log(err));
+});
+
+
 
 router.get("/shop/:id", (req, res) => {
   const id = req.params.id;
@@ -84,16 +108,26 @@ router.get("/available/:idRest/:fecha/:nPersonas/:nMax", (req, res) => {
 
   let horas = [
     "12:00",
+    "12:30",
     "13:00",
+    "13:30",
     "14:00",
+    "14:30",
     "15:00",
+    "15:30",
     "16:00",
+    "16:30",
     "17:00",
+    "17:30",
     "18:00",
+    "18:30",
     "19:00",
+    "19:30",
     "20:00",
+    "20:30",
     "21:00",
-    "22:00",
+    "21:30",
+    "22:00"
   ];
   let materias = horas;
 
@@ -134,7 +168,7 @@ router.post("/reservation/:idRes", function (req, res) {
     .then((client) =>
       mu.crearReserva(client, body, (restaurant) => res.json(restaurant))
     )
-    .then(res.redirect("/client"))
+    .then(res.redirect("/confirmation"))
     //for Front side rendering send the html instead of the json file
     .catch((err) => console.log(err));
 });
@@ -261,15 +295,25 @@ async function generarRes(res) {
 async function disponibles(id, fecha, nPersonas, nMax) {
   let horas = [
     "12:00",
+    "12:30",
     "13:00",
+    "13:30",
     "14:00",
+    "14:30",
     "15:00",
+    "15:30",
     "16:00",
+    "16:30",
     "17:00",
+    "17:30",
     "18:00",
+    "18:30",
     "19:00",
+    "19:30",
     "20:00",
+    "20:30",
     "21:00",
+    "21:30",
     "22:00",
   ];
   let materias = horas;

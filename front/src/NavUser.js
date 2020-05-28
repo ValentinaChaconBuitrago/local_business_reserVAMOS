@@ -36,7 +36,7 @@ const NavUser = () => {
       <div id="navbarNav">
         <ul className="navbar-nav navbar-right">
           <Link to="/login" className="nav-link btn-register navbar-btn">
-            <li className="prueba-nav" >Perfil</li>
+            <li className="prueba-nav" >información</li>
             <span className="sr-only">(current)</span>
           </Link>
           <Link to="/formAddStore" className="nav-link">

@@ -285,7 +285,7 @@ const Card = (props) => {
               </div>
             </div>
             <div className="row">
-              <div className="col-md-8">
+              <div className="col-md-8" >
                 <p className="card-text">{props.item.description}</p>
 
                 <button

@@ -5,8 +5,7 @@ function MongoUtils() {
   const mu = {};
 
   mu.connect = () => {
-    const uri =
-      process.env.MONGO_URL;
+    const uri = process.env.MONGO_URL;
     const client = new MongoClient(
       uri,
       { useNewUrlParser: true },
@@ -60,6 +59,19 @@ function MongoUtils() {
           date: pDate,
           phone: pPhone,
         })
+        .finally(() => client.close())
+    );
+  };
+
+  mu.getUserRestaurants = (ownerID) => {
+    let obj = { owner:"5eceebcbe0aed369038ef08f"};
+    console.log("Inside Mu, getUserRestaurant ", ownerID);
+    return mu.connect().then((client) =>
+      client
+        .db("web")
+        .collection("restaurantes")
+        .find(obj)
+        .toArray()
         .finally(() => client.close())
     );
   };
