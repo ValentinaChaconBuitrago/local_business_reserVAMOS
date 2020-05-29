@@ -266,6 +266,8 @@ const Card = (props) => {
               <div className="col-4">
                 <div className="d-flex flex-row-reverse">
                   <div className="p-2">
+                    /* Mariana Rodriguez: This component is clickable but clicking on it has no effect. Visually, at least,
+                    it should seem like it's not clickable (when hovering over it). */
                     <StarRatingComponent
                       id="stars"
                       name={
