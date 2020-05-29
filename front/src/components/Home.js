@@ -4,6 +4,8 @@ import "../Home.css";
 
 
 const Home = () =>{
+  
+  //El codigo html se prodia modulizar mas, haciendo mas entendible las partes que componen el Home.js
 
   return(<div className="Home">
     <Nav></Nav>
