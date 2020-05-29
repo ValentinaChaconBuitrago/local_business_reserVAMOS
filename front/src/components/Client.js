@@ -88,6 +88,9 @@ const Client = () => {
       <div className="Client">
         <Nav></Nav>
         <div>
+      /* Mariana Rodriguez: Personally, I think this banner is way to big and not necessary
+      as it delays the user's call to action (making a resevation). */
+      
           <div id="storesTittleDiv">
             <h1 id="storesTitle" className="intro-title mb-4">
               Restaurantes
