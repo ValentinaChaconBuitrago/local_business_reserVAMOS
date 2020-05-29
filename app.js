@@ -28,6 +28,7 @@ app.use("/", indexRouter);
 app.use("/", passportRouter);
 */
 app.use("/", indexRouter);
+//Me parece que la URL puede ser confusa con /passaport en vez de /auth 
 app.use("/passport", passportRouter);
 app.get("*", (req, res) => {
   res.sendFile("index.html", { root: path.join(__dirname, "front/build") });
