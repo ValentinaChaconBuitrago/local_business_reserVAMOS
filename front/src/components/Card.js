@@ -96,8 +96,14 @@ const Card = (props) => {
     setStartDate(date);
     const dateTimeFormat2 = new Intl.DateTimeFormat("en-GB", options1);
     let r = dateTimeFormat2.format(date);
+    //El split y la concatenación se puede hacer en una sola linea
+    //con el metodo .split y .join, quedaria así
+    // let d = "" + r.split("/").join("-")
+    // O se puede usar el metodo .replace
+    //Ej: let d = "" + r.replace(/[/]/g, "-") 
     let f = r.split("/");
     let d = "" + f[0] + "-" + f[1] + "-" + f[2];
+    //Falto limpiar el console.log(d)
     console.log(d);
 
     fetch(
