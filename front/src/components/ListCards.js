@@ -25,7 +25,8 @@ function calc(lat1, lat2, lon1, lon2) {
   d = d | 0;
   return d / 10;
 }
-
+/* Mariana: It's very difficult to browse through the list of restaurants as there are too many on the database. 
+There should be a searchin component and a sorting option to ease this process. */
 const ListCards = (props) => {
   let objetos = [];
   props.stores.map((item) => {
