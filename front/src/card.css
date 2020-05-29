@@ -1,4 +1,7 @@
-.botonCrearReserva {
+
+//Quedo un poco desorganizado la estrucutra del .css con su respectiva clase. 
+//Me parece que se podria crear una carpeta en componentes/card, y ahí colocar tanto el .css como el .js.
+.botonCrearReserva 
   color: #000000;
   padding: 1rem 1rem;
   border: 2px solid #329232;
