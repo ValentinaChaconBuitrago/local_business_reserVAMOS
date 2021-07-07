@@ -1,6 +1,16 @@
 /*
 Este componente maneja el api de google maps y renderiza el mapa con todos los marcadores respectivos
 */
+
+/* Comentario Juan Felipe torres: Me di cuenta que este componenete tiene varios estados, sería recomendable agregarle los
+   Proptypes para que validen los estados requeridos y los tipos de datos para no tener problemas
+   
+   Map.proptypes{
+   isMarkerShown: Proprtypes.bool,
+   ...
+   }
+*/
+
 import {
   withGoogleMap,
   GoogleMap,
